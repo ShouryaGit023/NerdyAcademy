@@ -1,16 +1,57 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useCustomCursor } from '@/hooks/useCustomCursor';
+import PageLoader from '@/components/PageLoader';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import MarqueeStrip from '@/components/MarqueeStrip';
+import ForWhoSection from '@/components/ForWhoSection';
+import BigStatement from '@/components/BigStatement';
+import WhySection from '@/components/WhySection';
+import RoadmapSection from '@/components/RoadmapSection';
+import SemestersSection from '@/components/SemestersSection';
+import InstructorSection from '@/components/InstructorSection';
+import AboutSection from '@/components/AboutSection';
+import CertificatesSection from '@/components/CertificatesSection';
+import PricingSection from '@/components/PricingSection';
+import SpokenEnglishSection from '@/components/SpokenEnglishSection';
+import FaqSection from '@/components/FaqSection';
+import SignSection from '@/components/SignSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  useScrollReveal();
+  const { cursorRef, followerRef } = useCustomCursor();
+
+  useEffect(() => {
+    document.title = 'Artificially Intelligent Course — Nerdy Academy';
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <>
+      <PageLoader />
+      <div ref={cursorRef} className="cursor-dot hidden md:block" />
+      <div ref={followerRef} className="cursor-follower hidden md:block" />
+      <Navbar />
+      <HeroSection />
+      <MarqueeStrip />
+      <ForWhoSection />
+      <BigStatement />
+      <WhySection />
+      <RoadmapSection />
+      <SemestersSection />
+      <InstructorSection />
+      <AboutSection />
+      <CertificatesSection />
+      <PricingSection />
+      <SpokenEnglishSection />
+      <FaqSection />
+      <SignSection />
+      <ContactSection />
+      <Footer />
+    </>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
