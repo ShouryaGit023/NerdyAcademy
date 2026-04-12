@@ -15,7 +15,11 @@ export interface Semester {
 export const semesters: Semester[] = [
   {
     tab: 'SEM 1',
+<<<<<<< HEAD
+    title: 'MARKETING DIGITAL FOUNDATIONS (AI-ENHANCED)',
+=======
     title: 'SEMESTER 1- DIGITAL MARKETING FOUNDATIONS (AI-ENHANCED)',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     goal: 'Build a complete foundation in Google, Meta, and HR marketing using AI',
     sessions: [
       { num: '01', title: 'SESSION 1', description: 'Google Docs, Sheets & Slides Automation' },
@@ -31,7 +35,11 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 2',
+<<<<<<< HEAD
+    title: 'AI IN FINANCE & ENTREPRENEURSHIP (AI-ENHANCED)',
+=======
     title: 'SEMESTER 2- AI IN FINANCE & ENTREPENURSHIP (AI-ENHANCED)',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     goal: 'Understand finance, automation, and AI-driven business tools',
     sessions: [
       { num: '10', title: 'SESSION 10', description: 'Financial Literacy (Income, Expenses, Assets, Liabilities)' },
@@ -47,8 +55,13 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 3',
+<<<<<<< HEAD
+    title: 'THE WORLD OF ARTIFICIAL INTELLIGENCE',
+    goal: 'Master modern AI platforms and their business applications',
+=======
     title: 'SEMESTER 3- THE WORLD OF ARTIFICIAL INTELLIGENCE',
     goal: 'Master modern AI platforms and their business applications.',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     sessions: [
       { num: '19', title: 'SESSION 19', description: 'Introduction to Generative AI (Text, Image, Video, Voice)' },
       { num: '20', title: 'SESSION 20', description: 'ChatGPT, Gemini, Claude, Perplexity (Hands-on Practice)' },
@@ -63,8 +76,13 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 4',
+<<<<<<< HEAD
+    title: 'CAREER, COMMUNICATION & ENTREPRENEURSHIP',
+    goal: 'Transform into a confident professional ready for job or business',
+=======
     title: 'SEMESTER 4- CAREER, COMMUNICATION & ENTREPRENEURSHIP',
     goal: 'Transform into a confident professional ready for job or business.',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     sessions: [
       { num: '28', title: 'SESSION 28', description: 'Resume & Portfolio building using AI' },
       { num: '29', title: 'SESSION 29', description: 'Elevator Pitch & Story telling Practice' },
@@ -82,10 +100,10 @@ export const semesters: Semester[] = [
 export const faqData = [
   { q: 'What is Nerdy Academy anyway?', a: 'Nerdy Academy offers online and classroom courses. We teach computer and communication skills. We help people grow.' },
   { q: 'Is this online or offline?', a: 'Both! You can attend live sessions online or at our classroom in Jaipur. Same content, same instructor.' },
-  { q: 'How long is the course?', a: '3 months, 4 semesters, 35+ live sessions. Each session is hands-on and action-packed.' },
+  { q: 'How long is the course?', a: '3 months, 4 semesters, 36 live sessions. Each session is hands-on and action-packed.' },
   { q: 'Do I get a certificate?', a: 'Yes. After completing all semesters, a Grand Final Project + VIVA, you receive a Nerdy Academy certificate.' },
-  { q: 'What\'s the difference between Batch and 1:1?', a: 'Batch is a group session (₹20,000). 1:1 Personal is a private session with the instructor (₹55,000). Both cover the same curriculum.' },
-  { q: 'Can I pay in installments?', a: 'Yes, we offer flexible payment options. Contact us for details.' },
+  { q: 'What\'s the difference between Batch and 1:1?', a: 'Rs 20000 for classroom/online batches and Rs. 55,000 for one to one online/classroom learning. Both cover the same curriculum.' },
+  { q: 'Can I pay in installments?', a: 'No, partial payments are not allowed, and we do not offer discounts or refunds.' },
 ];
 
 export const whyData = [

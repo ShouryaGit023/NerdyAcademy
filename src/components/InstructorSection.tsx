@@ -4,17 +4,20 @@ const InstructorSection = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start mt-[60px]">
       <div className="reveal-left">
-        <div className="relative overflow-hidden border border-primary/25 transition-all duration-400 hover:-translate-y-[6px] hover:shadow-[0_32px_64px_rgba(217,0,0,0.22)]">
-          <div className="w-full h-[400px] bg-gradient-to-br from-primary/20 to-background flex items-center justify-center">
-            <span className="font-heading text-8xl text-primary/30">SSM</span>
-          </div>
+        <div className="relative overflow-hidden border border-primary/25 h-[400px]">
+          {/* TODO: Replace this dummy image with the photo of Shrey (for the 'Not a guide, a guru' section copy) */}
+          <img
+            src="https://via.placeholder.com/600x800.png?text=Photo+of+Shrey+(Not+a+guide,+a+guru)"
+            alt="Shrey - Photo"
+            className="w-full h-full object-cover"
+          />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/[0.98] via-background/70 to-transparent p-[30px_30px_28px]">
             <div className="font-heading text-[2rem] tracking-[3px] text-primary mb-1 uppercase">Shrey Surya Mishra</div>
             <div className="text-[0.65rem] tracking-[4px] text-foreground/45 uppercase">President & CEO at Nerdy Academy</div>
           </div>
         </div>
-        <div className="bg-primary py-5 px-7 mt-[3px] clip-skew">
-          <p className="font-heading text-[1.3rem] tracking-[3px]">13+ YEARS EXP | 30 WINS, 0 LOSSES</p>
+        <div className="bg-primary py-5 px-7 mt-[3px] clip-skew text-center">
+          <p className="font-heading text-[1.5rem] tracking-[3px]">NOT A GUIDE, A GURU.</p>
         </div>
       </div>
 

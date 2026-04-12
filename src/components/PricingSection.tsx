@@ -13,14 +13,14 @@ const PricingSection = () => (
         <div className="font-heading text-[5rem] leading-none mb-[6px]">₹20,000</div>
         <div className="text-[0.6rem] tracking-[3px] text-foreground/35 mb-[38px]">PER STUDENT · 3 MONTHS</div>
         <ul className="list-none">
-          {['All 4 semesters covered', '35+ live sessions', 'Group learning environment', 'Quizzes & grading', 'Certificate on completion', 'Online or classroom'].map((f) => (
+          {['All 4 semesters covered', '36 live sessions', 'Group learning environment', 'Quizzes & grading', 'Certificate on completion', 'Online or classroom'].map((f) => (
             <li key={f} className="text-[0.85rem] py-[11px] border-b border-white/[0.08] flex gap-3 text-foreground/70">
               <span className="text-foreground flex-shrink-0">✓</span> {f}
             </li>
           ))}
         </ul>
         <div className="mt-7 bg-white/[0.06] p-[12px_18px] text-[0.62rem] tracking-[2px] text-foreground/40 leading-relaxed uppercase">
-          No discounts · No refunds · Partial payments are allowed
+          NO DISCOUNTS, NO REFUNDS, PARTIAL PAYMENTS ARE NOT ALLOWED
         </div>
       </div>
 
@@ -40,8 +40,8 @@ const PricingSection = () => (
             </li>
           ))}
         </ul>
-        <div className="mt-7 bg-black/20 p-[12px_18px] text-[0.62rem] tracking-[2px] text-white/50 leading-relaxed uppercase">
-          No discounts · No refunds · Partial payments are allowed
+        <div className="mt-7 bg-black/20 p-[12px_18px] text-[0.62rem] tracking-[1.5px] text-white/60 text-center uppercase">
+          NO DISCOUNTS, NO REFUNDS, PARTIAL PAYMENTS ARE NOT ALLOWED
         </div>
       </div>
     </div>

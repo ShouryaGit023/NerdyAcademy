@@ -75,7 +75,7 @@ const HeroSection = () => {
         </h1>
 
         <p className="text-base tracking-[0.5px] text-foreground/65 mb-11 max-w-[480px] leading-[1.8] animate-slide-left" style={{ animationDelay: '0.2s' }}>
-          3 months · 4 semesters · 65 modules of pure, brutal, hands-on learning. No fluff. No theory. Just doing.
+          3 months · 4 semesters · 65 modules of pure, brutal, hands-on learning. Doing is greater than theory.
         </p>
 
         <div ref={statsRef} className="flex gap-14 mb-12 animate-slide-left" style={{ animationDelay: '0.3s' }}>

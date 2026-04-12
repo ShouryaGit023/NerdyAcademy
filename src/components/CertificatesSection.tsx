@@ -1,3 +1,5 @@
+import { AutoSlideshow } from '@/components/ui/auto-slideshow';
+
 const CertificatesSection = () => (
   <section id="certificates" className="py-[120px] px-6 md:px-[60px] bg-primary">
     <span className="text-[0.65rem] tracking-[6px] uppercase text-white/65 mb-[14px] block reveal">Certifications</span>
@@ -5,7 +7,19 @@ const CertificatesSection = () => (
       EARN <span className="text-accent">YOUR</span><br />CERTIFICATE.
     </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-[3px] mt-[60px]">
+    {/* TODO: Insert images of Shrey here that highlight the UN, Startup India, and specific course certificates */}
+    <div className="w-full max-w-[900px] mx-auto mt-14 mb-[60px] aspect-[21/9] bg-black/40 border border-accent/20 relative overflow-hidden transition-all hover:border-accent/60">
+      <AutoSlideshow 
+        images={[
+          { src: "https://via.placeholder.com/1200x500.png?text=UN+Certificate+Standard", alt: "UN Certificate" },
+          { src: "https://via.placeholder.com/1200x500.png?text=Startup+India+Certified", alt: "Startup India Certificate" },
+          { src: "https://via.placeholder.com/1200x500.png?text=Specific+Course+Certificates", alt: "Course Certificates" }
+        ]} 
+        imageClassName="opacity-80"
+      />
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-[3px]">
       {[
         {
           title: 'UN Certified',

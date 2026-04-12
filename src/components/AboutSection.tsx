@@ -1,3 +1,5 @@
+import { AutoSlideshow } from '@/components/ui/auto-slideshow';
+
 const AboutSection = () => (
   <section id="about" className="py-[120px] px-6 md:px-[60px]" style={{ background: '#0d0d0d' }}>
     <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">About Nerdy</span>
@@ -19,7 +21,7 @@ const AboutSection = () => (
         {[
           { num: '500+', label: 'Students Trained' },
           { num: '₹5Cr+', label: 'Ad Budget Managed' },
-          { num: '35+', label: 'Live Sessions' },
+          { num: '36', label: 'Live Sessions' },
           { num: '100%', label: 'Hands-On' },
         ].map((tile) => (
           <div key={tile.label} className="bg-[#111] p-[30px] text-center">
@@ -27,6 +29,19 @@ const AboutSection = () => (
             <div className="text-[0.6rem] tracking-[3px] uppercase text-foreground/45">{tile.label}</div>
           </div>
         ))}
+      </div>
+
+      {/* TODO: Add images to visually support the '30 WINS, 0 LOSSES' track record claim */}
+      <div className="md:col-span-2 mt-8 bg-white/5 border border-primary/10 relative overflow-hidden aspect-[21/9] rounded-sm group">
+        <AutoSlideshow 
+          images={[
+            { src: "https://via.placeholder.com/1200x500.png?text=Track+Record+Win+01", alt: "Track record win 1" },
+            { src: "https://via.placeholder.com/1200x500.png?text=Track+Record+Win+02", alt: "Track record win 2" },
+            { src: "https://via.placeholder.com/1200x500.png?text=Track+Record+Win+03", alt: "Track record win 3" }
+          ]}
+          imageClassName="opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+          interval={3000}
+        />
       </div>
     </div>
   </section>
