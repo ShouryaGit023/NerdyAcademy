@@ -1,35 +1,43 @@
 import { whyData } from '@/data/courseData';
 
 const WhySection = () => (
-  <section id="why" className="py-[120px] px-6 md:px-[60px] bg-primary relative noise-overlay">
+  <section id="why" className="pt-[20px] pb-[100px] px-6 md:px-[60px] bg-primary relative noise-overlay">
     <div className="relative z-[1]">
-      <span className="text-[0.7rem] tracking-[6px] uppercase text-white/40 mb-[14px] block">THE NERDY PHILOSOPHY</span>
-      <h2 className="font-heading text-[clamp(38px,6vw,78px)] leading-[0.9] mb-[18px] text-white">
-        WHY <span className="text-black">NERDY?</span>
+      <div className="flex items-center gap-4 mb-8 reveal">
+        <div className="w-12 h-[3px] bg-white opacity-40" />
+        <span className="text-[0.8rem] tracking-[6px] uppercase text-white font-bold opacity-70">The Nerdy Philosophy</span>
+      </div>
+
+      <h2 className="font-heading text-[clamp(42px,7vw,92px)] leading-[0.85] mb-20 text-white reveal">
+        BECAUSE <span className="text-black">YOU'RE DONE</span><br />WATCHING.
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
         {whyData.map((item, idx) => (
           <div
             key={item.num}
-            className="bg-black/20 p-12 border border-white/10 hover:border-accent hover:bg-black transition-all duration-500 hover:-translate-y-3 group reveal relative overflow-hidden"
-            style={{ transitionDelay: `${idx * 0.05}s` }}
+            className="group relative p-12 border border-white/10 bg-black/20 hover:bg-black transition-all duration-500 hover:-translate-y-4 rounded-sm reveal overflow-hidden"
+            style={{ transitionDelay: `${idx * 0.1}s` }}
           >
-            <div className="absolute -top-4 -right-2 font-heading text-8xl text-white/[0.04] group-hover:text-accent/10 transition-colors pointer-events-none select-none">
+            {/* Background Number Glow */}
+            <div className="absolute -top-6 -right-4 font-heading text-9xl text-white/[0.04] group-hover:text-white/[0.12] transition-all duration-700 pointer-events-none select-none">
               {item.num}
             </div>
-            
-            <div className="w-14 h-1 bg-accent mb-8 group-hover:w-full transition-all duration-700" />
-            
-            <h4 className="font-heading text-[1.85rem] tracking-[1.5px] leading-tight mb-4 text-white group-hover:text-accent transition-colors">
-              {item.title}
-            </h4>
-            
-            <p className="text-[0.95rem] leading-[1.8] text-white/50 font-medium group-hover:text-white/80 transition-colors">
-              {item.desc}
-            </p>
 
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            {/* Accent Line */}
+            <div className="w-16 h-[2px] bg-white/30 group-hover:bg-accent group-hover:w-full transition-all duration-700 mb-8" />
+
+            <div className="relative z-10">
+              <h4 className="font-heading text-3xl tracking-[1px] leading-tight mb-4 text-white group-hover:text-accent transition-colors">
+                {item.title}
+              </h4>
+              <p className="text-[1rem] leading-[1.7] text-white/50 group-hover:text-white transition-colors font-medium">
+                {item.desc}
+              </p>
+            </div>
+
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
           </div>
         ))}
       </div>
