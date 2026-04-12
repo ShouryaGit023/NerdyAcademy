@@ -11,6 +11,7 @@ import WhySection from '@/components/WhySection';
 import RoadmapSection from '@/components/RoadmapSection';
 import SemestersSection from '@/components/SemestersSection';
 import InstructorSection from '@/components/InstructorSection';
+import InstructorJourneySection from '@/components/InstructorJourneySection';
 import AboutSection from '@/components/AboutSection';
 import CertificatesSection from '@/components/CertificatesSection';
 import PricingSection from '@/components/PricingSection';
@@ -42,6 +43,7 @@ const Index = () => {
       <RoadmapSection />
       <SemestersSection />
       <InstructorSection />
+      <InstructorJourneySection />
       <AboutSection />
       <CertificatesSection />
       <PricingSection />

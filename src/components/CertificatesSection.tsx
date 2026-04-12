@@ -1,4 +1,4 @@
-import { AutoSlideshow } from '@/components/ui/auto-slideshow';
+
 
 const CertificatesSection = () => (
   <section id="certificates" className="py-[120px] px-6 md:px-[60px] bg-primary">
@@ -7,18 +7,7 @@ const CertificatesSection = () => (
       EARN <span className="text-accent">YOUR</span><br />CERTIFICATE.
     </h2>
 
-    {/* TODO: Insert images of Shrey here that highlight the UN, Startup India, and specific course certificates */}
-    <div className="w-full max-w-[900px] mx-auto mt-14 mb-[60px] aspect-video bg-black/40 border border-accent/20 relative overflow-hidden transition-all hover:border-accent/60">
-      <AutoSlideshow 
-        images={[
-          { src: "/images/author/img431.jpg", alt: "UN Certificate" },
-          { src: "/images/author/img440.jpg", alt: "Startup India Certificate" },
-          { src: "/images/author/img457.jpg", alt: "Course Certificates" }
-        ]} 
-        imageClassName="opacity-80"
-        objectFit="contain"
-      />
-    </div>
+
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-[3px]">
       {[

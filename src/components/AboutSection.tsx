@@ -1,4 +1,4 @@
-import { AutoSlideshow } from '@/components/ui/auto-slideshow';
+
 
 const AboutSection = () => (
   <section id="about" className="py-[120px] px-6 md:px-[60px]" style={{ background: '#0d0d0d' }}>
@@ -31,19 +31,7 @@ const AboutSection = () => (
         ))}
       </div>
 
-      {/* TODO: Add images to visually support the '30 WINS, 0 LOSSES' track record claim */}
-      <div className="md:col-span-2 mt-8 bg-white/5 border border-primary/10 relative overflow-hidden aspect-video rounded-sm group">
-        <AutoSlideshow 
-          images={[
-            { src: "/images/author/img209.jpg", alt: "Track record win 1" },
-            { src: "/images/author/img215.jpg", alt: "Track record win 2" },
-            { src: "/images/author/img221.jpg", alt: "Track record win 3" }
-          ]}
-          imageClassName="opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-          interval={3000}
-          objectFit="contain"
-        />
-      </div>
+
     </div>
   </section>
 );
