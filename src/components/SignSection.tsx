@@ -3,7 +3,7 @@ const SignSection = () => (
     {/* TODO: Update this image placeholder for the 'Let us Spoon Feed You the AI Revolution' copy once media is available */}
     <div className="absolute inset-0 z-0 opacity-30 mix-blend-overlay pointer-events-none">
       <img 
-        src="https://via.placeholder.com/1920x1080.png?text=Image+for+'Let+us+Spoon+Feed+You+the+AI+Revolution'" 
+        src="/images/author/img209.jpg" 
         alt="Let us Spoon Feed You" 
         className="w-full h-full object-cover" 
       />

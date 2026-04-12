@@ -8,14 +8,15 @@ const CertificatesSection = () => (
     </h2>
 
     {/* TODO: Insert images of Shrey here that highlight the UN, Startup India, and specific course certificates */}
-    <div className="w-full max-w-[900px] mx-auto mt-14 mb-[60px] aspect-[21/9] bg-black/40 border border-accent/20 relative overflow-hidden transition-all hover:border-accent/60">
+    <div className="w-full max-w-[900px] mx-auto mt-14 mb-[60px] aspect-video bg-black/40 border border-accent/20 relative overflow-hidden transition-all hover:border-accent/60">
       <AutoSlideshow 
         images={[
-          { src: "https://via.placeholder.com/1200x500.png?text=UN+Certificate+Standard", alt: "UN Certificate" },
-          { src: "https://via.placeholder.com/1200x500.png?text=Startup+India+Certified", alt: "Startup India Certificate" },
-          { src: "https://via.placeholder.com/1200x500.png?text=Specific+Course+Certificates", alt: "Course Certificates" }
+          { src: "/images/author/img431.jpg", alt: "UN Certificate" },
+          { src: "/images/author/img440.jpg", alt: "Startup India Certificate" },
+          { src: "/images/author/img457.jpg", alt: "Course Certificates" }
         ]} 
         imageClassName="opacity-80"
+        objectFit="contain"
       />
     </div>
 

@@ -4,11 +4,11 @@ const InstructorSection = () => (
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start mt-[60px]">
       <div className="reveal-left">
-        <div className="relative overflow-hidden border border-primary/25 h-[400px]">
+        <div className="relative overflow-hidden border border-primary/25 aspect-[4/5]">
           {/* TODO: Replace this dummy image with the photo of Shrey (for the 'Not a guide, a guru' section copy) */}
           <img
-            src="https://via.placeholder.com/600x800.png?text=Photo+of+Shrey+(Not+a+guide,+a+guru)"
-            alt="Shrey - Photo"
+            src="/images/author/img239.jpg"
+            alt="Shrey Surya Mishra"
             className="w-full h-full object-cover"
           />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/[0.98] via-background/70 to-transparent p-[30px_30px_28px]">

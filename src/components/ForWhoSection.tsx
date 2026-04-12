@@ -7,9 +7,9 @@ const ForWhoSection = () => (
     <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
       <AutoSlideshow 
         images={[
-          { src: "https://via.placeholder.com/1920x1080.png?text=Classroom+Vibe+1", alt: "Classroom Vibe 1" },
-          { src: "https://via.placeholder.com/1920x1080.png?text=Online+Session+Preview", alt: "Online Session Preview" },
-          { src: "https://via.placeholder.com/1920x1080.png?text=Student+Interaction", alt: "Student Interaction" }
+          { src: "/images/author/img227.jpg", alt: "Classroom Vibe 1" },
+          { src: "/images/author/img233.jpg", alt: "Online Session Preview" },
+          { src: "/images/author/img239.jpg", alt: "Student Interaction" }
         ]} 
         interval={4000}
       />
