@@ -15,11 +15,7 @@ export interface Semester {
 export const semesters: Semester[] = [
   {
     tab: 'SEM 1',
-<<<<<<< HEAD
-    title: 'MARKETING DIGITAL FOUNDATIONS (AI-ENHANCED)',
-=======
     title: 'SEMESTER 1- DIGITAL MARKETING FOUNDATIONS (AI-ENHANCED)',
->>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     goal: 'Build a complete foundation in Google, Meta, and HR marketing using AI',
     sessions: [
       { num: '01', title: 'SESSION 1', description: 'Google Docs, Sheets & Slides Automation' },
@@ -35,11 +31,7 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 2',
-<<<<<<< HEAD
-    title: 'AI IN FINANCE & ENTREPRENEURSHIP (AI-ENHANCED)',
-=======
     title: 'SEMESTER 2- AI IN FINANCE & ENTREPENURSHIP (AI-ENHANCED)',
->>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     goal: 'Understand finance, automation, and AI-driven business tools',
     sessions: [
       { num: '10', title: 'SESSION 10', description: 'Financial Literacy (Income, Expenses, Assets, Liabilities)' },
@@ -55,13 +47,8 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 3',
-<<<<<<< HEAD
-    title: 'THE WORLD OF ARTIFICIAL INTELLIGENCE',
-    goal: 'Master modern AI platforms and their business applications',
-=======
     title: 'SEMESTER 3- THE WORLD OF ARTIFICIAL INTELLIGENCE',
     goal: 'Master modern AI platforms and their business applications.',
->>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     sessions: [
       { num: '19', title: 'SESSION 19', description: 'Introduction to Generative AI (Text, Image, Video, Voice)' },
       { num: '20', title: 'SESSION 20', description: 'ChatGPT, Gemini, Claude, Perplexity (Hands-on Practice)' },
@@ -76,13 +63,8 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 4',
-<<<<<<< HEAD
-    title: 'CAREER, COMMUNICATION & ENTREPRENEURSHIP',
-    goal: 'Transform into a confident professional ready for job or business',
-=======
     title: 'SEMESTER 4- CAREER, COMMUNICATION & ENTREPRENEURSHIP',
     goal: 'Transform into a confident professional ready for job or business.',
->>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     sessions: [
       { num: '28', title: 'SESSION 28', description: 'Resume & Portfolio building using AI' },
       { num: '29', title: 'SESSION 29', description: 'Elevator Pitch & Story telling Practice' },

@@ -7,12 +7,14 @@ interface AutoSlideshowProps {
   }[];
   interval?: number;
   imageClassName?: string;
+  objectFit?: 'cover' | 'contain';
 }
 
 export function AutoSlideshow({ 
   images, 
   interval = 3500, 
-  imageClassName = "opacity-80" 
+  imageClassName = "opacity-80",
+  objectFit = 'cover'
 }: AutoSlideshowProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -31,14 +33,14 @@ export function AutoSlideshow({
       {images.map((image, idx) => (
         <div 
           key={idx} 
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out bg-black/20 ${
             idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
           }`}
         >
           <img
             src={image.src}
             alt={image.alt}
-            className={`w-full h-full object-cover ${imageClassName}`}
+            className={`w-full h-full ${objectFit === 'cover' ? 'object-cover' : 'object-contain'} ${imageClassName}`}
           />
         </div>
       ))}
