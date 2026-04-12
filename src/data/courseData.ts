@@ -15,7 +15,7 @@ export interface Semester {
 export const semesters: Semester[] = [
   {
     tab: 'SEM 1',
-    title: 'Digital Marketing Foundations (AI-Enhanced)',
+    title: 'MARKETING DIGITAL FOUNDATIONS (AI-ENHANCED)',
     goal: 'Build a complete foundation in Google, Meta, and HR marketing using AI',
     sessions: [
       { num: '01', title: 'Session 1', description: 'Google Docs, Sheets & Slides Automation' },
@@ -31,7 +31,7 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 2',
-    title: 'AI in Finance & Entrepreneurship (AI-Enhanced)',
+    title: 'AI IN FINANCE & ENTREPRENEURSHIP (AI-ENHANCED)',
     goal: 'Understand finance, automation, and AI-driven business tools',
     sessions: [
       { num: '10', title: 'Session 10', description: 'Financial Literacy (Income, Expenses, Assets, Liabilities)' },
@@ -47,7 +47,7 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 3',
-    title: 'The World of Artificial Intelligence',
+    title: 'THE WORLD OF ARTIFICIAL INTELLIGENCE',
     goal: 'Master modern AI platforms and their business applications',
     sessions: [
       { num: '19', title: 'Session 19', description: 'Intro to Generative AI (Text, Image, Video, Voice)' },
@@ -63,7 +63,7 @@ export const semesters: Semester[] = [
   },
   {
     tab: 'SEM 4',
-    title: 'Career, Communication & Entrepreneurship',
+    title: 'CAREER, COMMUNICATION & ENTREPRENEURSHIP',
     goal: 'Transform into a confident professional ready for job or business',
     sessions: [
       { num: '28', title: 'Session 28', description: 'Resume & Portfolio Building using AI' },
@@ -82,10 +82,10 @@ export const semesters: Semester[] = [
 export const faqData = [
   { q: 'Who is this course for?', a: 'Anyone who wants to upskill — entrepreneurs, job seekers, freelancers, students, or working professionals. No prior tech knowledge required.' },
   { q: 'Is this online or offline?', a: 'Both! You can attend live sessions online or at our classroom in Jaipur. Same content, same instructor.' },
-  { q: 'How long is the course?', a: '3 months, 4 semesters, 35+ live sessions. Each session is hands-on and action-packed.' },
+  { q: 'How long is the course?', a: '3 months, 4 semesters, 36 live sessions. Each session is hands-on and action-packed.' },
   { q: 'Do I get a certificate?', a: 'Yes. After completing all semesters, a Grand Final Project + VIVA, you receive a Nerdy Academy certificate.' },
-  { q: 'What\'s the difference between Batch and 1:1?', a: 'Batch is a group session (₹20,000). 1:1 Personal is a private session with the instructor (₹55,000). Both cover the same curriculum.' },
-  { q: 'Can I pay in installments?', a: 'Yes, we offer flexible payment options. Contact us for details.' },
+  { q: 'What\'s the difference between Batch and 1:1?', a: 'Rs 20000 for classroom/online batches and Rs. 55,000 for one to one online/classroom learning. Both cover the same curriculum.' },
+  { q: 'Can I pay in installments?', a: 'No, partial payments are not allowed, and we do not offer discounts or refunds.' },
 ];
 
 export const whyData = [

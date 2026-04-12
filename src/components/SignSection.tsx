@@ -1,6 +1,15 @@
 const SignSection = () => (
   <section id="sign" className="py-[140px] px-6 md:px-[60px] bg-primary text-center relative overflow-hidden noise-overlay">
-    <div className="absolute font-heading text-[30vw] text-black/[0.08] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap pointer-events-none select-none">
+    {/* TODO: Update this image placeholder for the 'Let us Spoon Feed You the AI Revolution' copy once media is available */}
+    <div className="absolute inset-0 z-0 opacity-30 mix-blend-overlay pointer-events-none">
+      <img 
+        src="https://via.placeholder.com/1920x1080.png?text=Image+for+'Let+us+Spoon+Feed+You+the+AI+Revolution'" 
+        alt="Let us Spoon Feed You" 
+        className="w-full h-full object-cover" 
+      />
+    </div>
+
+    <div className="absolute font-heading text-[30vw] text-black/[0.08] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap pointer-events-none select-none z-[1]">
       ENROLL
     </div>
 
@@ -12,7 +21,7 @@ const SignSection = () => (
         START DOING.
       </div>
       <div className="font-condensed text-base tracking-[5px] uppercase text-white/65 mb-[50px]">
-        Your future self will thank you for this decision.
+        Let us Spoon Feed You the AI Revolution.
       </div>
       <a
         href="#contact"
