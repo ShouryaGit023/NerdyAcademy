@@ -7,6 +7,7 @@ import HeroSection from '@/components/HeroSection';
 import MarqueeStrip from '@/components/MarqueeStrip';
 import ForWhoSection from '@/components/ForWhoSection';
 import BigStatement from '@/components/BigStatement';
+import ActionQuoteSection from '@/components/ActionQuoteSection';
 import WhySection from '@/components/WhySection';
 import RoadmapSection from '@/components/RoadmapSection';
 import SemestersSection from '@/components/SemestersSection';
@@ -38,6 +39,7 @@ const Index = () => {
       <HeroSection />
       <MarqueeStrip />
       <ForWhoSection />
+      <ActionQuoteSection />
       <BigStatement />
       <WhySection />
       <RoadmapSection />
