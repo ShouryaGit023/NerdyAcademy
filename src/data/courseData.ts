@@ -15,72 +15,90 @@ export interface Semester {
 export const semesters: Semester[] = [
   {
     tab: 'SEM 1',
+<<<<<<< HEAD
     title: 'MARKETING DIGITAL FOUNDATIONS (AI-ENHANCED)',
+=======
+    title: 'SEMESTER 1- DIGITAL MARKETING FOUNDATIONS (AI-ENHANCED)',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     goal: 'Build a complete foundation in Google, Meta, and HR marketing using AI',
     sessions: [
-      { num: '01', title: 'Session 1', description: 'Google Docs, Sheets & Slides Automation' },
-      { num: '02', title: 'Session 2', description: 'Google Ads + AI Copywriting' },
-      { num: '03', title: 'Session 3', description: 'Google Analytics & Campaign Review' },
-      { num: '04', title: 'Session 4', description: 'Meta Ads Manager Setup & Targeting' },
-      { num: '05', title: 'Session 5', description: 'Instagram Boost vs Meta Ads Manager' },
-      { num: '06', title: 'Session 6', description: 'Canva + AI (Magic Write, Magic Design, Brand Kit)' },
-      { num: '07', title: 'Session 7', description: 'LinkedIn for Business & Employer Branding' },
-      { num: '08', title: 'Session 8', description: 'Resume and Job Description via ChatGPT' },
-      { num: '09', title: 'Session 9', description: 'Naukri, Indeed, Apna, LinkedIn Job Automation' },
+      { num: '01', title: 'SESSION 1', description: 'Google Docs, Sheets & Slides Automation' },
+      { num: '02', title: 'SESSION 2', description: 'Google Ads + AI Copywriting' },
+      { num: '03', title: 'SESSION 3', description: 'Google Analytics & Campaign Review' },
+      { num: '04', title: 'SESSION 4', description: 'Meta Ads Manager Setup & Targeting' },
+      { num: '05', title: 'SESSION 5', description: 'Instagram Boost vs Meta Ads Manager' },
+      { num: '06', title: 'SESSION 6', description: 'LinkedIn for Business & Employer Branding' },
+      { num: '07', title: 'SESSION 7', description: 'Resume and Job Description via ChatGPT' },
+      { num: '08', title: 'SESSION 8', description: 'Canva + AI (Magic Write, Magic Design, Brand Kit)' },
+      { num: '09', title: 'SESSION 9', description: 'Naukri, Indeed, Apna, LinkedIn Job Automation' },
     ],
   },
   {
     tab: 'SEM 2',
+<<<<<<< HEAD
     title: 'AI IN FINANCE & ENTREPRENEURSHIP (AI-ENHANCED)',
+=======
+    title: 'SEMESTER 2- AI IN FINANCE & ENTREPENURSHIP (AI-ENHANCED)',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     goal: 'Understand finance, automation, and AI-driven business tools',
     sessions: [
-      { num: '10', title: 'Session 10', description: 'Financial Literacy (Income, Expenses, Assets, Liabilities)' },
-      { num: '11', title: 'Session 11', description: 'Automating Finance Reports using ChatGPT + Excel' },
-      { num: '12', title: 'Session 12', description: 'Trading Basics + AI Stock Prediction Tools' },
-      { num: '13', title: 'Session 13', description: 'Entrepreneurship with AI Idea Generation' },
-      { num: '14', title: 'Session 14', description: 'Building Websites using AI (Durable, Framer, 10Web)' },
-      { num: '15', title: 'Session 15', description: 'App Creation using AI Builders (Glide, Softr, Bubble)' },
-      { num: '16', title: 'Session 16', description: 'WhatsApp Business API Setup (Wati / Twilio)' },
-      { num: '17', title: 'Session 17', description: 'CRM & IVR System Automation for Businesses' },
-      { num: '18', title: 'Session 18', description: 'Integration of Google Ads, WhatsApp, and Analytics' },
+      { num: '10', title: 'SESSION 10', description: 'Financial Literacy (Income, Expenses, Assets, Liabilities)' },
+      { num: '11', title: 'SESSION 11', description: 'Automating Finance Reports using ChatGPT + Excel' },
+      { num: '12', title: 'SESSION 12', description: 'Trading Basics + AI Stock Prediction Tools' },
+      { num: '13', title: 'SESSION 13', description: 'Entrepreneurship with AI Idea Generation' },
+      { num: '14', title: 'SESSION 14', description: 'Building Websites using AI (Durable, Framer, 10Web)' },
+      { num: '15', title: 'SESSION 15', description: 'App Creation using AI Builders (Glide, Softr, Bubble)' },
+      { num: '16', title: 'SESSION 16', description: 'WhatsApp Business API Setup (Wati / Twilio)' },
+      { num: '17', title: 'SESSION 17', description: 'CRM & IVR System Automation for Businesses' },
+      { num: '18', title: 'SESSION 18', description: 'Integration of Google Ads, WhatsApp, and Analytics' },
     ],
   },
   {
     tab: 'SEM 3',
+<<<<<<< HEAD
     title: 'THE WORLD OF ARTIFICIAL INTELLIGENCE',
     goal: 'Master modern AI platforms and their business applications',
+=======
+    title: 'SEMESTER 3- THE WORLD OF ARTIFICIAL INTELLIGENCE',
+    goal: 'Master modern AI platforms and their business applications.',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     sessions: [
-      { num: '19', title: 'Session 19', description: 'Intro to Generative AI (Text, Image, Video, Voice)' },
-      { num: '20', title: 'Session 20', description: 'ChatGPT, Gemini, Claude, Perplexity (Hands-on)' },
-      { num: '21', title: 'Session 21', description: 'Midjourney, Leonardo, Ideogram for Visuals & Branding' },
-      { num: '22', title: 'Session 22', description: 'Prompt Engineering — Writing Effective Prompts' },
-      { num: '23', title: 'Session 23', description: 'AI Copywriting Tools — Copy.ai, Jasper, Predis.ai' },
-      { num: '24', title: 'Session 24', description: 'Workflow Automation — Zapier, Make, Taskade, Relevance AI' },
-      { num: '25', title: 'Session 25', description: 'AI Chatbots — Chatbase, Voiceflow, ManyChat' },
-      { num: '26', title: 'Session 26', description: 'Creating Your Own AI Assistant' },
-      { num: '27', title: 'Session 27', description: 'Business Dashboard Building (ChatGPT + Sheets Integration)' },
+      { num: '19', title: 'SESSION 19', description: 'Introduction to Generative AI (Text, Image, Video, Voice)' },
+      { num: '20', title: 'SESSION 20', description: 'ChatGPT, Gemini, Claude, Perplexity (Hands-on Practice)' },
+      { num: '21', title: 'SESSION 21', description: 'Midjourney, Leonardo, Ideogram for Visuals & Branding' },
+      { num: '22', title: 'SESSION 22', description: 'Prompt Engineering - Writing Effective Prompts' },
+      { num: '23', title: 'SESSION 23', description: 'AI Copywriting Tools - Copy.ai, Jasper, Predis.ai' },
+      { num: '24', title: 'SESSION 24', description: 'Workflow Automation - Zapier, Make, Taskade, Relevance AI' },
+      { num: '25', title: 'SESSION 25', description: 'AI Chatbots - Chatbase, Voiceflow, ManyChat' },
+      { num: '26', title: 'SESSION 26', description: 'Creating Your Own AI Assistant' },
+      { num: '27', title: 'SESSION 27', description: 'Business Dashboard Building (ChatGPT + Sheets Integration)' },
     ],
   },
   {
     tab: 'SEM 4',
+<<<<<<< HEAD
     title: 'CAREER, COMMUNICATION & ENTREPRENEURSHIP',
     goal: 'Transform into a confident professional ready for job or business',
+=======
+    title: 'SEMESTER 4- CAREER, COMMUNICATION & ENTREPRENEURSHIP',
+    goal: 'Transform into a confident professional ready for job or business.',
+>>>>>>> 3a6e8d9c44f0fb280be0ac0cf3cec62054a6c751
     sessions: [
-      { num: '28', title: 'Session 28', description: 'Resume & Portfolio Building using AI' },
-      { num: '29', title: 'Session 29', description: 'Elevator Pitch & Storytelling Practice' },
-      { num: '30', title: 'Session 30', description: 'LinkedIn Optimization for Recruiters and Leads' },
-      { num: '31', title: 'Session 31', description: 'Public Speaking with AI Tools' },
-      { num: '32', title: 'Session 32', description: 'HR & Technical Mock Interviews' },
-      { num: '33', title: 'Session 33', description: 'Pitch Deck Creation (Canva + ChatGPT + Slides)' },
-      { num: '34', title: 'Session 34', description: 'Investor Presentation Skills & Storytelling' },
-      { num: '35', title: 'Session 35', description: 'Grand Final Test (Project + VIVA)' },
-      { num: '36', title: 'Session 36', description: 'Graduation Ceremony & Certificate Distribution' },
+      { num: '28', title: 'SESSION 28', description: 'Resume & Portfolio building using AI' },
+      { num: '29', title: 'SESSION 29', description: 'Elevator Pitch & Story telling Practice' },
+      { num: '30', title: 'SESSION 30', description: 'LINKEDIN Optimization for Recruiters and Leads' },
+      { num: '31', title: 'SESSION 31', description: 'Public Speaking with AI Tools' },
+      { num: '32', title: 'SESSION 32', description: 'HR & Technical Mock Interviews' },
+      { num: '33', title: 'SESSION 33', description: 'Pitch Deck Creation (Canva + ChatGPT + Slides)' },
+      { num: '34', title: 'SESSION 34', description: 'Investor Presentation Skills & Storytelling' },
+      { num: '35', title: 'SESSION 35', description: 'GRAND FINAL TEST (PROJECT + VIVA)' },
+      { num: '36', title: 'SESSION 36', description: 'Graduation Ceremony & Certificate Distribution' },
     ],
   },
 ];
 
 export const faqData = [
-  { q: 'Who is this course for?', a: 'Anyone who wants to upskill — entrepreneurs, job seekers, freelancers, students, or working professionals. No prior tech knowledge required.' },
+  { q: 'What is Nerdy Academy anyway?', a: 'Nerdy Academy offers online and classroom courses. We teach computer and communication skills. We help people grow.' },
   { q: 'Is this online or offline?', a: 'Both! You can attend live sessions online or at our classroom in Jaipur. Same content, same instructor.' },
   { q: 'How long is the course?', a: '3 months, 4 semesters, 36 live sessions. Each session is hands-on and action-packed.' },
   { q: 'Do I get a certificate?', a: 'Yes. After completing all semesters, a Grand Final Project + VIVA, you receive a Nerdy Academy certificate.' },
@@ -109,16 +127,21 @@ export const forWhoCards = [
   {
     icon: '🚀',
     title: 'Entrepreneurs',
-    items: ['10x your sales', 'Smarter marketing systems', 'WhatsApp that sells', 'Automated business flows', 'Stronger finance control'],
+    items: ['10X SALES, SMARTER MARKETING.', 'STRONGER FINANCE.', 'WhatsApp THAT SELLS.', 'AUTOMATED SYSTEMS.'],
   },
   {
     icon: '💼',
     title: 'Job Seekers',
-    items: ['Learn what the job demands', 'Training that gets you hired', 'Marketing · Finance · HR', 'Mock interviews + VIVA', 'LinkedIn for recruiters'],
+    items: ['LEARN WHAT THE JOB DEMANDS.', 'TRAINING THAT HELPS YOU GET HIRED.'],
   },
   {
     icon: '⚡',
     title: 'Freelancers',
-    items: ['Own your schedule', 'Boost your income', 'Work from anywhere', 'Build passive income streams', 'AI-powered services'],
+    items: ['OWN YOUR SCHEDULE.', 'BOOST YOUR INCOME.', 'WORK FROM ANYWHERE.', 'PASSIVE INCOME.'],
+  },
+  {
+    icon: '🎓',
+    title: 'Students',
+    items: ['LAUNCH YOUR CAREER.', 'LEARN INDUSTRY SKILLS.', 'BUILD YOUR NETWORK.'],
   },
 ];

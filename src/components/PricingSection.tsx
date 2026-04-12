@@ -19,7 +19,7 @@ const PricingSection = () => (
             </li>
           ))}
         </ul>
-        <div className="mt-7 bg-white/[0.06] p-[12px_18px] text-[0.62rem] tracking-[1.5px] text-foreground/40 text-center uppercase">
+        <div className="mt-7 bg-white/[0.06] p-[12px_18px] text-[0.62rem] tracking-[2px] text-foreground/40 leading-relaxed uppercase">
           NO DISCOUNTS, NO REFUNDS, PARTIAL PAYMENTS ARE NOT ALLOWED
         </div>
       </div>

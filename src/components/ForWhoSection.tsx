@@ -46,6 +46,11 @@ const ForWhoSection = () => (
         ))}
       </div>
     </div>
+    <div className="mt-12 text-center reveal">
+      <p className="text-[0.8rem] tracking-[4px] uppercase text-foreground/35">
+        Basically, anyone who wants to upskill.
+      </p>
+    </div>
   </section>
 );
 
