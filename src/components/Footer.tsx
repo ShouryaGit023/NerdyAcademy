@@ -13,7 +13,7 @@ const Footer = () => (
           {[
             { href: 'https://www.instagram.com/nerdy.academy', label: '📸 NERDY.ACADEMY' },
             { href: 'https://www.instagram.com/nerdyskills', label: '📸 NERDYSKILLS' },
-            { href: 'mailto:info@thenerdyacademy.com', label: '✉ EMAIL' },
+            { href: 'mailto:shreysuryamishra@gmail.com', label: '✉ EMAIL' },
             { href: 'https://www.thenerdyacademy.com', label: '🌐 WEBSITE' },
           ].map((s) => (
             <a
@@ -64,8 +64,8 @@ const Footer = () => (
 
         <div className="mb-5">
           <div className="text-[0.5rem] tracking-[4px] text-foreground/[0.22] mb-[6px]">EMAIL</div>
-          <a href="mailto:info@thenerdyacademy.com" className="font-heading text-base tracking-[2px] text-foreground/65 no-underline block hover:text-primary">
-            info@thenerdyacademy.com
+          <a href="mailto:shreysuryamishra@gmail.com" className="font-heading text-base tracking-[2px] text-foreground/65 no-underline block hover:text-primary">
+            shreysuryamishra@gmail.com
           </a>
         </div>
 
