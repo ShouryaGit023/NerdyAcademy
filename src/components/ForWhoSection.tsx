@@ -1,19 +1,11 @@
 import { forWhoCards } from '@/data/courseData';
-import { AutoSlideshow } from '@/components/ui/auto-slideshow';
 
 const ForWhoSection = () => (
   <section id="for-who" className="py-[120px] px-6 md:px-[60px] relative overflow-hidden" style={{ background: '#0d0d0d' }}>
-    {/* TODO: Replace background images for the 'second page formatting section' once media files are provided */}
-    <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-      <AutoSlideshow 
-        images={[
-          { src: "/images/author/img227.jpg", alt: "Classroom Vibe 1" },
-          { src: "/images/author/img233.jpg", alt: "Online Session Preview" },
-          { src: "/images/author/img239.jpg", alt: "Student Interaction" }
-        ]} 
-        interval={4000}
-      />
-    </div>
+    <div 
+      className="absolute inset-0 z-0 pointer-events-none opacity-[0.15] bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: 'url("/images/author/img227.jpg")' }}
+    />
 
     <div className="relative z-[1]">
       <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">Who Is This For?</span>

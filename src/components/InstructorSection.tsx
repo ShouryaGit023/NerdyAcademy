@@ -2,17 +2,17 @@ const InstructorSection = () => (
   <section id="instructor" className="py-[120px] px-6 md:px-[60px] bg-background relative overflow-hidden">
     <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">The Instructor</span>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start mt-[60px]">
-      <div className="reveal-left">
-        <div className="relative overflow-hidden border border-primary/25 aspect-[4/5]">
+    <div className="grid grid-cols-1 md:grid-cols-[420px_1fr] gap-10 md:gap-20 items-start mt-[60px]">
+      <div className="reveal-left mx-auto md:mx-0 w-full max-w-[420px]">
+        <div className="relative overflow-hidden border border-primary/25">
           {/* TODO: Replace this dummy image with the photo of Shrey (for the 'Not a guide, a guru' section copy) */}
           <img
-            src="/images/author/img239.jpg"
+            src="/images/author/img209.jpg"
             alt="Shrey Surya Mishra"
-            className="w-full h-full object-cover"
+            className="w-full h-auto block"
           />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/[0.98] via-background/70 to-transparent p-[30px_30px_28px]">
-            <div className="font-heading text-[2rem] tracking-[3px] text-primary mb-1 uppercase">Shrey Surya Mishra</div>
+            <div className="font-heading text-[2rem] tracking-[3px] text-white mb-1 uppercase">Shrey Surya Mishra</div>
             <div className="text-[0.65rem] tracking-[4px] text-foreground/45 uppercase">President & CEO at Nerdy Academy</div>
           </div>
         </div>
