@@ -47,11 +47,11 @@ const InstructorJourneySection = () => {
       `}} />
 
       <div className="px-6 md:px-[60px] text-center mb-12 w-full max-w-4xl mx-auto">
-        <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">Decades of Polymathy</span>
-        <h2 className="font-heading text-[clamp(32px,5vw,58px)] leading-[0.95] mb-6 reveal">
+        <span className="text-[0.85rem] tracking-[6px] uppercase text-primary mb-[18px] block reveal font-black">Decades of Polymathy</span>
+        <h2 className="font-heading text-[clamp(36px,5.5vw,68px)] leading-[0.9] mb-8 reveal">
           THE <span className="text-primary">JOURNEY.</span>
         </h2>
-        <p className="text-[0.9rem] leading-[1.9] text-foreground/60 reveal">
+        <p className="text-[1.1rem] md:text-[1.25rem] leading-[1.6] text-foreground/80 font-semibold reveal">
           From representing India at UNESCO and conquering the Formula 4 racing tracks to leading digital marketing 
           in London — witness the milestones of a true polymath.
         </p>
@@ -101,10 +101,10 @@ const InstructorJourneySection = () => {
                 key={`milestone-${idx}`} 
                 className="px-10 py-6 border border-white/10 bg-primary/20 hover:bg-primary/40 transition-colors min-w-[280px] flex flex-col justify-center rounded-sm"
               >
-                <div className="text-accent font-heading text-[1.4rem] tracking-[1.5px] mb-2 font-bold uppercase">
+                <div className="text-accent font-heading text-[1.6rem] tracking-[2px] mb-2 font-black uppercase">
                   {m.title}
                 </div>
-                <div className="text-white text-[0.7rem] tracking-[1px] font-bold uppercase opacity-90 whitespace-nowrap">
+                <div className="text-white text-[0.85rem] tracking-[1.5px] font-black uppercase opacity-100 whitespace-nowrap">
                   {m.desc}
                 </div>
               </div>
@@ -121,10 +121,10 @@ const InstructorJourneySection = () => {
             { label: 'FORMULA RACER', val: 'F4' },
           ].map((stat, i) => (
             <div key={i} className="p-10 md:p-14 text-center border-r border-white/10 last:border-r-0 hover:bg-white/[0.05] transition-colors group">
-               <div className="font-heading text-5xl md:text-6xl text-accent mb-2 group-hover:scale-110 transition-transform">
+               <div className="font-heading text-6xl md:text-7xl text-accent mb-2 group-hover:scale-110 transition-transform">
                  {stat.val}
                </div>
-               <div className="text-[0.55rem] tracking-[4px] text-white/70 uppercase font-bold">
+               <div className="text-[0.85rem] tracking-[5px] text-white/90 uppercase font-black">
                  {stat.label}
                </div>
             </div>

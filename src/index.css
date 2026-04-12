@@ -54,14 +54,14 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Barlow', sans-serif;
-    font-weight: 500; /* Boosted from 400 for a bolder look */
+    font-weight: 600; /* Further boosted for maximum impact */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
   html {
     scroll-behavior: smooth;
-    font-size: 17px; /* Enlarged base font size */
+    font-size: 18.2px; /* Further enlarged base font size */
   }
 }
 

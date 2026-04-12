@@ -61,13 +61,24 @@ const CertificatesSection = () => (
       ))}
     </div>
 
-    <div className="mt-10 bg-black/30 p-[28px_36px] flex items-center gap-7 flex-wrap">
-      <span className="font-heading text-[1.2rem] tracking-[3px] text-accent flex-shrink-0">TOPICS COVERED:</span>
-      {['MARKETING', 'FINANCE', 'AI TOOLS', 'CAREER', 'COMMUNICATION', 'ENTREPRENEURSHIP'].map((tag) => (
-        <span key={tag} className="bg-white/[0.13] px-4 py-[7px] text-[0.65rem] tracking-[3px] uppercase">
-          {tag}
-        </span>
-      ))}
+    <div className="mt-16 bg-black/40 p-10 md:p-14 border-t border-white/10 relative overflow-hidden reveal">
+      <div className="flex flex-col gap-10">
+        <h4 className="font-heading text-[1.5rem] tracking-[5px] text-accent flex items-center gap-4">
+          <div className="w-10 h-[2px] bg-accent" />
+          TOPICS COVERED:
+        </h4>
+        
+        <div className="flex flex-wrap gap-4 md:gap-6">
+          {['MARKETING', 'FINANCE', 'AI TOOLS', 'CAREER', 'COMMUNICATION', 'ENTREPRENEURSHIP'].map((tag) => (
+            <span 
+              key={tag} 
+              className="bg-accent text-black px-8 py-4 font-black text-[0.9rem] tracking-[3px] uppercase hover:bg-white hover:-translate-y-1 transition-all duration-300 clip-skew-sm cursor-default shadow-[8px_8px_0px_rgba(0,0,0,0.3)]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 );
