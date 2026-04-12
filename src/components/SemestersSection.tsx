@@ -24,12 +24,12 @@ const SemestersSection = () => {
             </h2>
           </div>
 
-          <div className="flex gap-3 flex-wrap reveal">
+          <div className="grid grid-cols-2 sm:flex sm:gap-3 gap-2 w-full sm:w-auto reveal">
             {semesters.map((sem, idx) => (
               <button
                 key={sem.tab}
                 onClick={() => setActive(idx)}
-                className={`font-heading text-lg tracking-[3px] px-8 py-4 border-2 transition-all duration-300 rounded-sm ${
+                className={`font-heading text-base md:text-lg tracking-[2px] md:tracking-[3px] px-4 md:px-8 py-3 md:py-4 border-2 transition-all duration-300 rounded-sm w-full sm:w-auto ${
                   active === idx
                     ? 'bg-primary text-white border-primary shadow-[0_0_20px_rgba(255,10,10,0.3)]'
                     : 'bg-transparent text-white/30 border-white/10 hover:bg-white/5 hover:text-white hover:border-white/30'
@@ -41,17 +41,17 @@ const SemestersSection = () => {
           </div>
         </div>
 
-        <div className="border-l-[8px] border-primary pl-10 mb-16 reveal text-white group">
-          <div className="text-accent text-[0.9rem] tracking-[4px] font-black uppercase mb-2 opacity-80">
+        <div className="border-l-[4px] md:border-l-[8px] border-primary pl-6 md:pl-10 mb-16 reveal text-white group">
+          <div className="text-accent text-[0.7rem] md:text-[0.9rem] tracking-[3px] md:tracking-[4px] font-black uppercase mb-2 opacity-80">
             {active === 0 && "Sessions 01 — 09"}
             {active === 1 && "Sessions 10 — 18"}
             {active === 2 && "Sessions 19 — 27"}
             {active === 3 && "Sessions 28 — 36"}
           </div>
-          <h3 className="font-heading text-[2.5rem] md:text-[3.5rem] tracking-[2px] leading-tight mb-2 uppercase transition-all duration-500">
+          <h3 className="font-heading text-[1.8rem] sm:text-[2.5rem] md:text-[3.5rem] tracking-[1px] md:tracking-[2px] leading-tight mb-2 uppercase transition-all duration-500 overflow-hidden text-ellipsis">
             {semesters[active].title}
           </h3>
-          <p className="text-[1.1rem] text-white/50 font-bold uppercase tracking-[2px]">Objective: {semesters[active].goal}</p>
+          <p className="text-[0.85rem] md:text-[1.1rem] text-white/50 font-bold uppercase tracking-[1px] md:tracking-[2px]">Objective: {semesters[active].goal}</p>
         </div>
 
         <Carousel
