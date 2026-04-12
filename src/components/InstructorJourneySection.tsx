@@ -1,12 +1,12 @@
 import React from 'react';
 
 const JOURNEY_IMAGES = [
-  "img209.jpg", "img215.jpg", "img221.jpg", "img227.jpg", "img233.jpg", 
-  "img239.jpg", "img245.jpg", "img251.jpg", "img257.jpg", "img268.jpg", 
-  "img279.jpg", "img290.jpg", "img301.jpg", "img312.jpg", "img323.jpg", 
-  "img334.jpg", "img345.jpg", "img356.jpg", "img367.jpg", "img378.jpg", 
+  "img209.jpg", "img215.jpg", "img221.jpg", "img301.jpg", "img233.jpg", 
+  "img334.jpg", "img245.jpg", "img472.jpg", "img257.jpg", "img268.jpg", 
+  "img279.jpg", "img290.jpg", "img227.jpg", "img312.jpg", "img323.jpg", 
+  "img239.jpg", "img345.jpg", "img356.jpg", "img367.jpg", "img378.jpg", 
   "img389.jpg", "img419.jpg", "img424.jpg", "img431.jpg", "img440.jpg", 
-  "img457.jpg", "img462.jpg", "img467.jpg", "img472.jpg", "img479.jpg", 
+  "img457.jpg", "img462.jpg", "img467.jpg", "img251.jpg", "img479.jpg", 
   "img484.jpg", "img491.jpg", "img501.jpg"
 ].map(img => `/images/author/${img}`);
 const splitIndex = Math.ceil(JOURNEY_IMAGES.length / 2);
