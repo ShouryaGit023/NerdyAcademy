@@ -13,7 +13,7 @@ const ContactSection = () => {
     
     // Add your Web3Forms Access Key here. Get it for free at https://web3forms.com/
     // I'm putting a placeholder, but this will now correctly attempt a real send.
-    object.access_key = "YOUR_API_KEY_FROM_WEB3FORMS"; 
+    object.access_key = "9f076ecd-42a7-4efc-9580-dcdaa05b14c6"; 
     object.subject = `New Enquiry from ${object.name}`;
 
     try {
