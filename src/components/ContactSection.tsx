@@ -4,15 +4,44 @@ const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
+
+    const formData = new FormData(e.currentTarget);
+    const object = Object.fromEntries(formData);
+    
+    // Add your Web3Forms Access Key here. Get it for free at https://web3forms.com/
+    // I'm putting a placeholder, but this will now correctly attempt a real send.
+    object.access_key = "YOUR_API_KEY_FROM_WEB3FORMS"; 
+    object.subject = `New Enquiry from ${object.name}`;
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(object)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        e.currentTarget.reset();
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        console.error("Submission failed:", result);
+        alert("Something went wrong. Please try again or use the phone links.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Network error. Please check your connection.");
+    } finally {
       setSending(false);
-      setSubmitted(true);
-      (e.target as HTMLFormElement).reset();
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 1200);
+    }
   };
 
   return (
@@ -54,39 +83,39 @@ const ContactSection = () => {
         <div className="bg-[#0d0d0d] p-[58px_48px] border-t-4 border-accent">
           <form onSubmit={handleSubmit}>
             <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">FULL NAME *</label>
-            <input required placeholder="Your full name" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
+            <input name="name" required placeholder="Your full name" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
               <div>
                 <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">EMAIL *</label>
-                <input required type="email" placeholder="you@email.com" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
+                <input name="email" required type="email" placeholder="you@email.com" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
               </div>
               <div>
                 <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">PHONE *</label>
-                <input required type="tel" placeholder="+91 00000 00000" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
+                <input name="phone" required type="tel" placeholder="+91 00000 00000" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
               </div>
             </div>
 
             <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">CITY *</label>
-            <input required placeholder="Your city" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
+            <input name="city" required placeholder="Your city" className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]" />
 
             <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">LEARNING MODE *</label>
-            <select required className="w-full bg-[#141414] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]">
+            <select name="mode" required defaultValue="" className="w-full bg-[#141414] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]">
               <option value="" disabled>— Select mode —</option>
-              <option>Online</option>
-              <option>Classroom (Jaipur)</option>
+              <option value="Online">Online</option>
+              <option value="Classroom (Jaipur)">Classroom (Jaipur)</option>
             </select>
 
             <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">COURSE PREFERENCE *</label>
-            <select required className="w-full bg-[#141414] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]">
+            <select name="course" required defaultValue="" className="w-full bg-[#141414] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]">
               <option value="" disabled>— Select course type —</option>
-              <option>Batch (₹20,000) — Online / Classroom</option>
-              <option>1:1 Personal (₹55,000) — Online / Classroom</option>
-              <option>Not Sure Yet</option>
+              <option value="Batch (₹20,000)">Batch (₹20,000) — Online / Classroom</option>
+              <option value="1:1 Personal (₹55,000)">1:1 Personal (₹55,000) — Online / Classroom</option>
+              <option value="Not Sure Yet">Not Sure Yet</option>
             </select>
 
             <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">MESSAGE (OPTIONAL)</label>
-            <textarea rows={3} placeholder="Any questions or specific goals..." className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px] resize-y" />
+            <textarea name="message" rows={3} placeholder="Any questions or specific goals..." className="w-full bg-white/[0.04] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px] resize-y" />
 
             <button
               type="submit"

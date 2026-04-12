@@ -176,6 +176,10 @@
   -webkit-text-stroke: 4px white;
   color: transparent;
 }
+.text-outline-primary {
+  -webkit-text-stroke: 1px hsl(var(--primary));
+  color: transparent;
+}
 
 /* ── Loader ── */
 @keyframes loaderPulse {
