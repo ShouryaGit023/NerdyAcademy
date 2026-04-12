@@ -19,8 +19,8 @@ const PricingSection = () => (
             </li>
           ))}
         </ul>
-        <div className="mt-7 bg-white/[0.06] p-[12px_18px] text-[0.62rem] tracking-[2px] text-foreground/40">
-          FLEXIBLE PAYMENT OPTIONS AVAILABLE
+        <div className="mt-7 bg-white/[0.06] p-[12px_18px] text-[0.62rem] tracking-[2px] text-foreground/40 leading-relaxed uppercase">
+          No discounts · No refunds · Partial payments are allowed
         </div>
       </div>
 
@@ -40,8 +40,8 @@ const PricingSection = () => (
             </li>
           ))}
         </ul>
-        <div className="mt-7 bg-black/20 p-[12px_18px] text-[0.62rem] tracking-[2px] text-white/60">
-          MOST POPULAR · FASTEST RESULTS
+        <div className="mt-7 bg-black/20 p-[12px_18px] text-[0.62rem] tracking-[2px] text-white/50 leading-relaxed uppercase">
+          No discounts · No refunds · Partial payments are allowed
         </div>
       </div>
     </div>

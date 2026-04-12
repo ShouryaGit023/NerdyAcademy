@@ -8,18 +8,18 @@ const CertificatesSection = () => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-[3px] mt-[60px]">
       {[
         {
-          title: 'Course Completion',
-          items: ['Attend all 4 semesters', 'Complete all quizzes', 'Score above threshold', 'Submit all assignments'],
+          title: 'UN Certified',
+          items: ['Recognized learning standards', 'Structured evaluation & grading'],
           accent: false,
         },
         {
-          title: 'Grand Final Project',
-          items: ['Build a real campaign', 'Present to jury', 'Defend your strategy', 'Use all AI tools taught'],
+          title: 'Startup India Certified',
+          items: ['Government-recognized startup', 'Career & business credibility'],
           accent: false,
         },
         {
-          title: 'VIVA Examination',
-          items: ['Oral examination', 'Concept application', 'Real-time problem solving', 'Industry scenario questions'],
+          title: 'Nerdy Academy Certificate',
+          items: ['Merit-based evaluation', 'Final score clearly mentioned'],
           accent: true,
         },
       ].map((cert) => (
