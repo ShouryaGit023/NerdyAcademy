@@ -18,7 +18,7 @@ const PricingSection = () => (
         <div className="font-heading text-[5rem] leading-none mb-[6px]">₹20,000</div>
         <div className="text-[0.6rem] tracking-[3px] text-foreground/35 mb-[38px]">PER STUDENT · 3 MONTHS</div>
         <ul className="list-none">
-          {['All 4 semesters covered', '36 live sessions', 'Group learning environment', 'Quizzes & grading', 'Certificate on completion', 'Online or classroom', '30 minutes/session of English'].map((f) => (
+          {['All 4 semesters covered', '36 live sessions', 'Group learning environment', 'Quizzes & grading', '3 Certificates on completion', 'Online or classroom', '30 minutes/session of English'].map((f) => (
             <li key={f} className="text-[0.85rem] py-[11px] border-b border-white/[0.08] flex gap-3 text-foreground/70">
               <span className="text-foreground flex-shrink-0">✓</span> {f}
             </li>

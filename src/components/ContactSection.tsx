@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from "sonner";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -11,8 +12,7 @@ const ContactSection = () => {
     const formData = new FormData(e.currentTarget);
     const object = Object.fromEntries(formData);
     
-    // Add your Web3Forms Access Key here. Get it for free at https://web3forms.com/
-    // I'm putting a placeholder, but this will now correctly attempt a real send.
+    // Web3Forms Access Key
     object.access_key = "9f076ecd-42a7-4efc-9580-dcdaa05b14c6"; 
     object.subject = `New Enquiry from ${object.name}`;
 
@@ -30,15 +30,22 @@ const ContactSection = () => {
 
       if (result.success) {
         setSubmitted(true);
-        e.currentTarget.reset();
+        toast.success("Enquiry sent successfully!", {
+          description: "We'll reach out within 24 hours.",
+        });
+        (e.target as HTMLFormElement).reset();
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         console.error("Submission failed:", result);
-        alert("Something went wrong. Please try again or use the phone links.");
+        toast.error("Form submission failed", {
+          description: result.message || "Something went wrong. Please try again.",
+        });
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Network error. Please check your connection.");
+      toast.error("Connection error", {
+        description: "Please check your network and try again.",
+      });
     } finally {
       setSending(false);
     }
@@ -59,9 +66,9 @@ const ContactSection = () => {
           </h3>
 
           {[
-            { label: 'PHONE', value: '8225855200', href: 'tel:8225855200' },
-            { label: 'PHONE 2', value: '7828399992', href: 'tel:7828399992' },
-            { label: 'EMAIL', value: 'info@thenerdyacademy.com', href: 'mailto:info@thenerdyacademy.com' },
+            { label: 'PHONE', value: '+91 8225855200', href: 'tel:8225855200' },
+            { label: 'PHONE 2', value: '+91 7828399992', href: 'tel:7828399992' },
+            { label: 'EMAIL', value: 'shreysuryamishra@gmail.com', href: 'mailto:shreysuryamishra@gmail.com' },
             { label: 'INSTAGRAM', value: '@NERDY.ACADEMY', href: 'https://www.instagram.com/nerdy.academy' },
           ].map((link) => (
             <a
