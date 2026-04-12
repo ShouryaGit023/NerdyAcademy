@@ -16,53 +16,43 @@ const InstructorSection = () => (
             <div className="text-[0.65rem] tracking-[4px] text-foreground/45 uppercase">President & CEO at Nerdy Academy</div>
           </div>
         </div>
-        <div className="bg-primary py-5 px-7 mt-[3px] clip-skew text-center">
-          <p className="font-heading text-[1.5rem] tracking-[3px]">NOT A GUIDE, A GURU.</p>
+        <div className="bg-primary py-7 px-10 mt-[3px] clip-skew text-center shadow-[10px_10px_0_rgba(255,10,10,0.2)]">
+          <p className="font-heading text-[2rem] tracking-[4px] leading-none text-white font-black">NOT A GUIDE,<br />A GURU.</p>
         </div>
       </div>
 
       <div className="reveal-right">
-        <h3 className="font-heading text-[clamp(32px,5vw,58px)] leading-[0.95] mb-6">
-          MEET <span className="text-primary">SHREY.</span>
+        <h3 className="font-heading text-[clamp(48px,8vw,110px)] leading-[0.8] mb-10 tracking-[-2px]">
+          MEET <span className="text-primary italic">SHREY.</span>
         </h3>
-        <p className="text-[0.9rem] leading-[1.9] text-foreground/60 mb-6">
+        <p className="text-[1.1rem] md:text-[1.35rem] leading-[1.5] text-foreground font-semibold mb-10 uppercase tracking-[0.5px]">
           DPS Bhilai Scholar and NIT Raipur Graduate (Engineering), Shrey also studied Economics at the University of Warsaw in Poland. He previously led Digital Marketing at AME Trade in London, UK.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-          <div>
-            <div className="text-xs tracking-widest text-primary uppercase mb-2">Achievements</div>
-            <ul className="list-none space-y-2">
-              <li className="text-[0.8rem] text-foreground/80 flex gap-2">
-                <span className="text-primary">✦</span>
-                Represented India at UNESCO APEID (Indonesia)
-              </li>
-              <li className="text-[0.8rem] text-foreground/80 flex gap-2">
-                <span className="text-primary">✦</span>
-                TEDx Champion & Speaker
-              </li>
-            </ul>
-          </div>
-          <div>
-            <div className="text-xs tracking-widest text-primary uppercase mb-2">Sports & Hobbies</div>
-            <ul className="list-none space-y-2">
-              <li className="text-[0.8rem] text-foreground/80 flex gap-2">
-                <span className="text-primary">✦</span>
-                Formula 4 Racer
-              </li>
-              <li className="text-[0.8rem] text-foreground/80 flex gap-2">
-                <span className="text-primary">✦</span>
-                Pro Pickleball Player
-              </li>
-            </ul>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+          {[
+            { cat: 'ACHIEVEMENT', text: 'Represented India at UNESCO APEID' },
+            { cat: 'ACHIEVEMENT', text: 'TEDx Champion & Main Speaker' },
+            { cat: 'SPORT', text: 'Formula 4 Racing Driver' },
+            { cat: 'SPORT', text: 'Pro Pickleball Player (#12 India)' },
+          ].map((item, i) => (
+            <div key={i} className="bg-white/5 border-2 border-white/10 p-6 md:p-8 rounded-2xl hover:border-accent transition-all group hover:-translate-y-2 duration-500">
+               <div className="text-primary text-[0.7rem] tracking-[4px] font-black uppercase mb-3 flex items-center gap-2">
+                 <div className="w-4 h-[2px] bg-primary group-hover:w-10 transition-all" />
+                 {item.cat}
+               </div>
+               <p className="text-white text-[1.1rem] md:text-[1.3rem] font-black leading-[1.2] uppercase tracking-[0.5px]">
+                 {item.text}
+               </p>
+            </div>
+          ))}
         </div>
 
-        <p className="text-[0.9rem] leading-[1.9] text-foreground/60">
-          His teaching method is simple: you don't watch — you do. Every session is live, interactive, and project-based. No pre-recorded fluff.
+        <p className="text-[1.1rem] md:text-[1.3rem] leading-[1.4] text-foreground font-black uppercase mb-10">
+          His teaching method is simple: <span className="bg-primary px-2 text-white">YOU DON'T WATCH — YOU DO.</span> EVERY SESSION IS LIVE, INTERACTIVE, AND PROJECT-BASED. NO PRE-RECORDED FLUFF.
         </p>
-
-        <ul className="list-none mt-7">
+ 
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2 mt-7">
           {[
             'Live demonstrations — not slides',
             'You build during the session',
@@ -70,8 +60,8 @@ const InstructorSection = () => (
             'Grading-based progression',
             'Grand final project + VIVA',
           ].map((item) => (
-            <li key={item} className="text-[0.85rem] tracking-[1px] py-[13px] border-b border-white/[0.07] flex items-center gap-[14px] text-foreground/80">
-              <span className="w-2 h-2 bg-primary flex-shrink-0" />
+            <li key={item} className="text-[1rem] tracking-[1.5px] py-[15px] border-b border-white/[0.1] flex items-center gap-[14px] text-foreground font-black uppercase">
+              <span className="w-3 h-3 bg-primary flex-shrink-0 rotate-45" />
               {item}
             </li>
           ))}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { semesters } from '@/data/courseData';
 import {
   Carousel,
@@ -6,97 +6,104 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from '@/components/ui/carousel';
-
-const AUTO_PLAY_INTERVAL = 2500;
+import Autoplay from 'embla-carousel-autoplay';
 
 const SemestersSection = () => {
   const [active, setActive] = useState(0);
-  const [api, setApi] = useState<CarouselApi>();
-
-  const startAutoPlay = useCallback(() => {
-    if (!api) return;
-    const id = setInterval(() => {
-      if (api.canScrollNext()) {
-        api.scrollNext();
-      } else {
-        api.scrollTo(0);
-      }
-    }, AUTO_PLAY_INTERVAL);
-    return id;
-  }, [api]);
-
-  useEffect(() => {
-    if (!api) return;
-    // Reset to start whenever tab changes
-    api.scrollTo(0);
-    const id = startAutoPlay();
-
-    // Pause auto-play on manual interaction
-    const stopOnInteract = () => {
-      clearInterval(id);
-    };
-    api.on('pointerDown', stopOnInteract);
-
-    return () => {
-      clearInterval(id);
-      api.off('pointerDown', stopOnInteract);
-    };
-  }, [api, active, startAutoPlay]);
 
   return (
-    <section id="semesters" className="py-[120px] px-6 md:px-[60px]" style={{ background: '#0d0d0d' }}>
-      <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">Full Curriculum</span>
-      <h2 className="font-heading text-[clamp(38px,6vw,78px)] leading-[0.95] mb-[18px] reveal">
-        4 SEMESTERS.<br />
-        <span className="text-primary">36 SESSIONS.</span><br />
-        ZERO PADDING.
-      </h2>
+    <section id="semesters" className="py-32 px-6 md:px-[60px] bg-[#080808]">
+      <div className="relative z-[1] max-w-[1400px] mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
+          <div className="max-w-2xl">
+            <span className="text-[0.8rem] tracking-[6px] uppercase text-primary font-black mb-[14px] block reveal">Full Curriculum</span>
+            <h2 className="font-heading text-[clamp(42px,7vw,92px)] leading-[0.85] reveal text-white">
+              4 SEMESTERS.<br />
+              <span className="text-primary">36 SESSIONS.</span>
+            </h2>
+          </div>
 
-      <div className="flex gap-[3px] mt-[50px] flex-wrap reveal">
-        {semesters.map((sem, idx) => (
-          <button
-            key={sem.tab}
-            onClick={() => setActive(idx)}
-            className={`font-heading text-base tracking-[3px] px-7 py-[14px] border transition-all duration-200 ${
-              active === idx
-                ? 'bg-primary text-foreground border-primary'
-                : 'bg-transparent text-foreground/35 border-foreground/10 hover:bg-primary hover:text-foreground hover:border-primary'
-            }`}
-          >
-            {sem.tab}
-          </button>
-        ))}
-      </div>
+          <div className="flex gap-3 flex-wrap reveal">
+            {semesters.map((sem, idx) => (
+              <button
+                key={sem.tab}
+                onClick={() => setActive(idx)}
+                className={`font-heading text-lg tracking-[3px] px-8 py-4 border-2 transition-all duration-300 rounded-sm ${
+                  active === idx
+                    ? 'bg-primary text-white border-primary shadow-[0_0_20px_rgba(255,10,10,0.3)]'
+                    : 'bg-transparent text-white/30 border-white/10 hover:bg-white/5 hover:text-white hover:border-white/30'
+                }`}
+              >
+                {sem.tab}
+              </button>
+            ))}
+          </div>
+        </div>
 
-      <div className="mt-10">
-        <div className="border-l-[6px] border-primary pl-6 mb-10">
-          <h3 className="font-heading text-[2.4rem] tracking-[2px] mb-[6px]">{semesters[active].title}</h3>
-          <p className="text-[0.85rem] text-foreground/50">Goal: {semesters[active].goal}</p>
+        <div className="border-l-[8px] border-primary pl-10 mb-16 reveal text-white group">
+          <div className="text-accent text-[0.9rem] tracking-[4px] font-black uppercase mb-2 opacity-80">
+            {active === 0 && "Sessions 01 — 09"}
+            {active === 1 && "Sessions 10 — 18"}
+            {active === 2 && "Sessions 19 — 27"}
+            {active === 3 && "Sessions 28 — 36"}
+          </div>
+          <h3 className="font-heading text-[2.5rem] md:text-[3.5rem] tracking-[2px] leading-tight mb-2 uppercase transition-all duration-500">
+            {semesters[active].title}
+          </h3>
+          <p className="text-[1.1rem] text-white/50 font-bold uppercase tracking-[2px]">Objective: {semesters[active].goal}</p>
         </div>
 
         <Carousel
           key={active}
-          setApi={setApi}
-          opts={{ align: 'start', loop: true }}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 3000,
+              stopOnInteraction: true,
+            }) as any,
+          ]}
           className="w-full relative group"
         >
-          <CarouselContent className="-ml-3">
-            {semesters[active].sessions.map((session) => (
-              <CarouselItem key={session.num} className="pl-3 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                <div className="bg-[#111] p-7 border-t-[3px] border-transparent hover:border-accent hover:bg-[#161616] relative transition-all duration-300 hover:-translate-y-1 h-full">
-                  <span className="font-heading text-5xl text-primary/[0.12] leading-none absolute top-[14px] right-[18px]">
+          <CarouselContent className="-ml-4 pb-16">
+            {semesters[active].sessions.map((session, idx) => (
+              <CarouselItem key={`${active}-${idx}`} className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 flex">
+                <div 
+                  className="bg-black/40 p-10 md:p-12 border-2 border-white/10 hover:border-accent transition-all duration-500 hover:-translate-y-3 group h-full relative overflow-hidden backdrop-blur-md rounded-2xl cursor-default min-h-[400px] flex flex-col justify-center w-full"
+                >
+                  {/* Watermark Number */}
+                  <span className="font-heading text-8xl text-accent/[0.05] group-hover:text-accent/[0.12] leading-none absolute -top-4 -right-2 transition-all duration-500 pointer-events-none select-none">
                     {session.num}
                   </span>
-                  <h4 className="text-[0.65rem] tracking-[3px] uppercase text-primary mb-2">{session.title}</h4>
-                  <p className="text-[0.85rem] text-foreground/70 leading-[1.7]">{session.description}</p>
+                  
+                  <div className="relative z-10 flex flex-col justify-between h-full">
+                    <div>
+                      <div className="text-accent/60 font-heading text-2xl mb-4 group-hover:text-accent transition-colors">#{session.num}</div>
+                      <h4 className="text-[0.9rem] tracking-[4px] uppercase text-accent font-black mb-10 flex items-center gap-4">
+                        <div className="w-10 h-[2px] bg-accent/40 group-hover:w-full transition-all duration-700 rounded-full" />
+                        {session.title}
+                      </h4>
+                    </div>
+                    
+                    <p className="text-[1.2rem] md:text-[1.35rem] text-white leading-[1.2] font-black uppercase tracking-[0.5px] group-hover:drop-shadow-[0_2px_10px_rgba(255,255,255,0.4)] transition-all">
+                      {session.description}
+                    </p>
+                  </div>
+
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex -left-12 lg:-left-16 bg-background/50 border-input hover:bg-accent hover:text-background transition-colors" />
-          <CarouselNext className="hidden md:flex -right-12 lg:-right-16 bg-background/50 border-input hover:bg-accent hover:text-background transition-colors" />
+          
+          {/* Manual Movement Arrows */}
+          <div className="absolute -bottom-10 right-12 hidden md:flex gap-4">
+            <CarouselPrevious className="static h-14 w-14 bg-white/5 border-white/10 text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300" />
+            <CarouselNext className="static h-14 w-14 bg-white/5 border-white/10 text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300" />
+          </div>
         </Carousel>
       </div>
     </section>

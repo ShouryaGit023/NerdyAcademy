@@ -46,14 +46,16 @@ const InstructorJourneySection = () => {
         }
       `}} />
 
-      <div className="px-6 md:px-[60px] text-center mb-12 w-full max-w-4xl mx-auto">
-        <span className="text-[0.85rem] tracking-[6px] uppercase text-primary mb-[18px] block reveal font-black">Decades of Polymathy</span>
-        <h2 className="font-heading text-[clamp(36px,5.5vw,68px)] leading-[0.9] mb-8 reveal">
+      <div className="px-6 md:px-[60px] text-center mb-16 w-full max-w-5xl mx-auto">
+        <div className="inline-block px-8 py-2 bg-black text-white text-[1rem] tracking-[12px] uppercase mb-10 reveal font-black scale-y-110">
+          MEET SHREY
+        </div>
+        <h2 className="font-heading text-[clamp(48px,10vw,110px)] leading-[0.8] mb-10 reveal italic tracking-[-2px]">
           THE <span className="text-primary">JOURNEY.</span>
         </h2>
-        <p className="text-[1.1rem] md:text-[1.25rem] leading-[1.6] text-foreground/80 font-semibold reveal">
-          From representing India at UNESCO and conquering the Formula 4 racing tracks to leading digital marketing 
-          in London — witness the milestones of a true polymath.
+        <div className="w-32 h-[4px] bg-primary mx-auto mb-12 reveal shadow-[0_4px_15px_rgba(255,0,0,0.3)]" />
+        <p className="text-[1.3rem] md:text-[1.6rem] leading-[1.3] text-foreground font-black uppercase tracking-[-1px] reveal">
+          From representing <span className="text-primary italic">India at UNESCO</span> and conquering the <span className="text-primary italic">Formula 4</span> racing tracks — witness the milestones of a true <span className="underline decoration-primary decoration-4 underline-offset-8">polymath.</span>
         </p>
       </div>
 
