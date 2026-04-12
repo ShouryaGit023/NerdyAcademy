@@ -1,22 +1,25 @@
-import { AutoSlideshow } from '@/components/ui/auto-slideshow';
 
 const CertificatesSection = () => (
   <section id="certificates" className="py-[120px] px-6 md:px-[60px] bg-primary">
+    <style>{`
+      .cert-curtain::after {
+        content: ''; position: absolute; inset: 0; background-color: hsl(var(--primary));
+        transform-origin: right; transform: scaleX(1);
+        transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1) 0.5s; z-index: 10;
+      }
+      .cert-curtain.visible::after { transform: scaleX(0); }
+    `}</style>
+    
     <span className="text-[0.65rem] tracking-[6px] uppercase text-white/65 mb-[14px] block reveal">Certifications</span>
     <h2 className="font-heading text-[clamp(38px,6vw,78px)] leading-[0.95] mb-[18px] reveal">
       EARN <span className="text-accent">YOUR</span><br />CERTIFICATE.
     </h2>
 
-    {/* TODO: Insert images of Shrey here that highlight the UN, Startup India, and specific course certificates */}
-    <div className="w-full max-w-[900px] mx-auto mt-14 mb-[60px] aspect-video bg-black/40 border border-accent/20 relative overflow-hidden transition-all hover:border-accent/60">
-      <AutoSlideshow 
-        images={[
-          { src: "/images/author/img431.jpg", alt: "UN Certificate" },
-          { src: "/images/author/img440.jpg", alt: "Startup India Certificate" },
-          { src: "/images/author/img457.jpg", alt: "Course Certificates" }
-        ]} 
-        imageClassName="opacity-80"
-        objectFit="contain"
+    <div className="my-[50px] border-2 border-white/20 relative overflow-hidden reveal cert-curtain">
+      <img
+        src="/certificates/img168.jpg"
+        alt="Nerdy Academy Certificate"
+        className="w-full block"
       />
     </div>
 
@@ -40,7 +43,7 @@ const CertificatesSection = () => (
       ].map((cert) => (
         <div
           key={cert.title}
-          className={`bg-black/[0.35] p-[40px_28px] border-b-4 transition-transform duration-300 hover:-translate-y-[6px] ${
+          className={`bg-black/[0.35] p-[40px_28px] border-b-4 transition-transform duration-300 hover:-translate-y-[6px] reveal ${
             cert.accent ? 'border-foreground' : 'border-accent'
           }`}
         >

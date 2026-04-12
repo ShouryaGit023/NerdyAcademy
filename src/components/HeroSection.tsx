@@ -9,7 +9,19 @@ const stats = [
 
 const HeroSection = () => {
   const [counts, setCounts] = useState<(number | string)[]>(stats.map((s) => (s.isText ? s.value : 0)));
+  const [scrollOpacity, setScrollOpacity] = useState(1);
+  const [scrollY, setScrollY] = useState(0);
   const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      setScrollOpacity(Math.max(0, 1 - window.scrollY / 400));
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const el = statsRef.current;
@@ -51,13 +63,42 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="min-h-screen flex items-center relative overflow-hidden bg-background pt-[120px] pb-[60px] px-6 md:px-[60px]">
+      <style>{`
+        @keyframes heroImgEnter {
+          0% { opacity: 0; transform: translateY(150px) scale(0.8) rotate(-8deg); }
+          100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+        }
+      `}</style>
+
       {/* Background text */}
-      <div className="absolute font-heading text-[clamp(120px,18vw,260px)] text-primary/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap select-none pointer-events-none animate-bgdrift">
+      <div 
+        className="absolute font-heading text-[clamp(120px,18vw,260px)] text-primary/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap select-none pointer-events-none animate-bgdrift z-0"
+        style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.3}px))` }}
+      >
         AI
       </div>
 
+      {/* Hero Image */}
+      <div 
+        className="absolute bottom-8 right-[1%] z-[1] hidden md:block pointer-events-none"
+        style={{ 
+          opacity: scrollOpacity, 
+          transform: `translateY(${scrollY * 0.15}px) scale(${Math.max(0.8, 1 - scrollY / 2000)}) rotate(${scrollY * 0.05}deg)` 
+        }}
+      >
+        <img 
+          src="/herosection/landing-page-2-Ci2sv5zu.png" 
+          alt="Hero" 
+          className="w-[45vw] max-w-[700px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(217,0,0,0.15)]"
+          style={{ animation: 'heroImgEnter 1.4s cubic-bezier(0.16,1,0.3,1) 0.4s both' }}
+        />
+      </div>
+
       {/* Content */}
-      <div className="relative z-[2] max-w-[820px]">
+      <div 
+        className="relative z-[2] max-w-[820px]"
+        style={{ transform: `translateY(${scrollY * -0.05}px)` }}
+      >
         <span className="inline-block bg-primary text-[0.65rem] tracking-[5px] uppercase px-5 py-2 mb-7 clip-skew-xs animate-slide-left">
           By Nerdy Academy
         </span>
