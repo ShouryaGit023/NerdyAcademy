@@ -103,7 +103,7 @@ const ContactSection = () => {
             <select name="mode" required defaultValue="" className="w-full bg-[#141414] border border-white/10 text-foreground p-[14px_16px] font-body text-[0.9rem] outline-none focus:border-accent transition-colors mb-[14px]">
               <option value="" disabled>— Select mode —</option>
               <option value="Online">Online</option>
-              <option value="Classroom (Jaipur)">Classroom (Jaipur)</option>
+              <option value="Classroom (Bhilai)">Classroom (Bhilai)</option>
             </select>
 
             <label className="text-[0.55rem] tracking-[3px] uppercase text-foreground/35 block mb-2">COURSE PREFERENCE *</label>

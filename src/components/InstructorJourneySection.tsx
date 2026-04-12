@@ -118,7 +118,7 @@ const InstructorJourneySection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 bg-primary border-t-4 border-primary">
           {[
             { label: 'YEARS EXP', val: '13+' },
-            { label: 'WINS, 0 LOSSES', val: '30+' },
+            { label: 'COUNTRIES', val: '20+' },
             { label: 'INDIA PICKLEBALL', val: '#12' },
             { label: 'FORMULA RACER', val: 'F4' },
           ].map((stat, i) => (
@@ -139,7 +139,7 @@ const InstructorJourneySection = () => {
           <div className="relative z-10 flex flex-col justify-center px-10 md:pl-24 py-16 md:py-0">
             <h4 className="font-heading text-[clamp(38px,8vw,92px)] leading-[0.8] text-white drop-shadow-2xl">
               <span className="text-accent">LONDON</span> · WARSAW<br />
-              INDONESIA · <span className="text-accent">BALI</span><br />
+              MUMBAI · <span className="text-accent">BALI</span><br /><span className="text-accent">BHILAI </span>
               & <span className="text-accent italic">MORE.</span>
             </h4>
             <div className="mt-6 h-1 w-24 bg-primary rounded-full" />
