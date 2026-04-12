@@ -9,10 +9,19 @@ const JOURNEY_IMAGES = [
   "img457.jpg", "img462.jpg", "img467.jpg", "img472.jpg", "img479.jpg", 
   "img484.jpg", "img491.jpg", "img501.jpg"
 ].map(img => `/images/author/${img}`);
-
 const splitIndex = Math.ceil(JOURNEY_IMAGES.length / 2);
 const ROW1_IMAGES = JOURNEY_IMAGES.slice(0, splitIndex);
 const ROW2_IMAGES = JOURNEY_IMAGES.slice(splitIndex);
+
+const MILESTONES = [
+  { title: 'WARSAW, POLAND', desc: 'Economics · University of Warsaw · GEP' },
+  { title: 'LONDON', desc: 'Digital Marketing · AME Trade' },
+  { title: 'INDONESIA', desc: 'Represented India · UNESCO APEID Meet' },
+  { title: 'TEDX', desc: 'Champion · Pandri 15' },
+  { title: 'PICKLEBALL', desc: 'Ranked #12 India · WPC Bali · HK #3' },
+  { title: 'FORMULA 4', desc: 'Racing driver — yes, for real' },
+  { title: 'NERDY ACADEMY', desc: 'CEO · 13+ years mentoring' },
+];
 
 const InstructorJourneySection = () => {
   return (
@@ -38,7 +47,7 @@ const InstructorJourneySection = () => {
       `}} />
 
       <div className="px-6 md:px-[60px] text-center mb-12 w-full max-w-4xl mx-auto">
-        <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">13+ Years of Experience</span>
+        <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">Decades of Polymathy</span>
         <h2 className="font-heading text-[clamp(32px,5vw,58px)] leading-[0.95] mb-6 reveal">
           THE <span className="text-primary">JOURNEY.</span>
         </h2>
@@ -80,6 +89,71 @@ const InstructorJourneySection = () => {
               />
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="w-full mt-24 reveal">
+        {/* Milestone Carousel */}
+        <div className="bg-[#050505] border-t border-white/10 overflow-hidden py-4">
+          <div className="flex gap-4 w-max animate-scroll-left px-4">
+            {[...MILESTONES, ...MILESTONES, ...MILESTONES].map((m, idx) => (
+              <div 
+                key={`milestone-${idx}`} 
+                className="px-10 py-6 border border-white/10 bg-primary/20 hover:bg-primary/40 transition-colors min-w-[280px] flex flex-col justify-center rounded-sm"
+              >
+                <div className="text-accent font-heading text-[1.4rem] tracking-[1.5px] mb-2 font-bold uppercase">
+                  {m.title}
+                </div>
+                <div className="text-white text-[0.7rem] tracking-[1px] font-bold uppercase opacity-90 whitespace-nowrap">
+                  {m.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 bg-primary border-t-4 border-primary">
+          {[
+            { label: 'YEARS EXP', val: '13+' },
+            { label: 'WINS, 0 LOSSES', val: '30+' },
+            { label: 'INDIA PICKLEBALL', val: '#12' },
+            { label: 'FORMULA RACER', val: 'F4' },
+          ].map((stat, i) => (
+            <div key={i} className="p-10 md:p-14 text-center border-r border-white/10 last:border-r-0 hover:bg-white/[0.05] transition-colors group">
+               <div className="font-heading text-5xl md:text-6xl text-accent mb-2 group-hover:scale-110 transition-transform">
+                 {stat.val}
+               </div>
+               <div className="text-[0.55rem] tracking-[4px] text-white/70 uppercase font-bold">
+                 {stat.label}
+               </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Work Map Section */}
+        <div className="relative bg-black overflow-hidden grid grid-cols-1 md:grid-cols-[1.2fr_1fr] min-h-[400px] md:min-h-[550px]">
+          {/* Text Content */}
+          <div className="relative z-10 flex flex-col justify-center px-10 md:pl-24 py-16 md:py-0">
+            <h4 className="font-heading text-[clamp(38px,8vw,92px)] leading-[0.8] text-white drop-shadow-2xl">
+              <span className="text-accent">LONDON</span> · WARSAW<br />
+              INDONESIA · <span className="text-accent">BALI</span><br />
+              & <span className="text-accent italic">MORE.</span>
+            </h4>
+            <div className="mt-6 h-1 w-24 bg-primary rounded-full" />
+          </div>
+
+          {/* Map Image Content */}
+          <div className="relative flex items-center p-4 md:p-10">
+            <img 
+              src="/images/author/world map.png" 
+              alt="Work Map" 
+              className="w-full h-auto object-contain opacity-100 drop-shadow-[0_0_30px_rgba(255,10,10,0.1)]"
+            />
+          </div>
+
+          {/* Background Polish */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent pointer-events-none" />
         </div>
       </div>
     </section>

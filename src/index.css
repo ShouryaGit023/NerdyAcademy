@@ -54,10 +54,14 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Barlow', sans-serif;
+    font-weight: 500; /* Boosted from 400 for a bolder look */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
   html {
     scroll-behavior: smooth;
+    font-size: 17px; /* Enlarged base font size */
   }
 }
 
@@ -89,6 +93,8 @@
 /* ── Bebas heading utility ── */
 .font-heading {
   font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.03em;
+  font-weight: 700;
 }
 .font-body-condensed {
   font-family: 'Barlow Condensed', sans-serif;

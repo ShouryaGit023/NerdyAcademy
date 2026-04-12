@@ -1,14 +1,20 @@
 const PricingSection = () => (
   <section id="pricing" className="py-[120px] px-6 md:px-[60px] bg-background">
-    <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">Pricing</span>
-    <h2 className="font-heading text-[clamp(38px,6vw,78px)] leading-[0.95] mb-[18px] reveal">
-      INVEST IN <span className="text-primary">YOURSELF.</span>
+    <div className="flex items-center gap-4 mb-8 reveal">
+      <div className="w-12 h-[3px] bg-primary" />
+      <span className="text-[0.75rem] tracking-[6px] uppercase text-primary font-black">Transparent Pricing</span>
+    </div>
+
+    <h2 className="font-heading text-[clamp(52px,11vw,120px)] leading-[0.82] mb-12 reveal flex flex-col">
+      <span className="text-white">HOW MUCH</span>
+      <span className="text-primary">DOES IT</span>
+      <span className="text-white">COST?</span>
     </h2>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-[3px] mt-[60px]">
       {/* Batch */}
       <div className="bg-[#111] p-[58px_48px] border-t-4 border-foreground/20 relative overflow-hidden transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_28px_56px_rgba(0,0,0,0.4)]">
-        <div className="absolute top-4 right-5 font-heading text-7xl text-white/[0.04] leading-none pointer-events-none">BATCH</div>
+        <div className="absolute top-8 -right-4 font-heading text-[12rem] text-white/[0.08] leading-none pointer-events-none select-none uppercase -rotate-12">BATCH</div>
         <div className="text-[0.6rem] tracking-[5px] uppercase text-foreground/45 mb-[14px]">GROUP BATCH</div>
         <div className="font-heading text-[5rem] leading-none mb-[6px]">₹20,000</div>
         <div className="text-[0.6rem] tracking-[3px] text-foreground/35 mb-[38px]">PER STUDENT · 3 MONTHS</div>
@@ -26,7 +32,7 @@ const PricingSection = () => (
 
       {/* Featured - 1:1 */}
       <div className="bg-primary p-[58px_48px] border-t-4 border-accent relative overflow-hidden transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_28px_56px_rgba(217,0,0,0.35)]">
-        <div className="absolute top-4 right-5 font-heading text-7xl text-white/[0.04] leading-none pointer-events-none">1:1</div>
+        <div className="absolute top-8 -right-4 font-heading text-[12rem] text-black/[0.12] leading-none pointer-events-none select-none -rotate-12">1:1</div>
         <span className="bg-accent text-background text-[0.58rem] tracking-[4px] px-[14px] py-[5px] inline-block mb-[18px] font-bold">
           RECOMMENDED
         </span>

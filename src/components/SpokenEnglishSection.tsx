@@ -1,36 +1,73 @@
 const SpokenEnglishSection = () => (
-  <section id="spoken" className="py-[120px] px-6 md:px-[60px]" style={{ background: '#0d0d0d' }}>
-    <span className="text-[0.65rem] tracking-[6px] uppercase text-primary mb-[14px] block reveal">Bonus Module</span>
-    <h2 className="font-heading text-[clamp(38px,6vw,78px)] leading-[0.95] mb-[18px] reveal">
-      SPOKEN <span className="text-primary">ENGLISH</span><br />INCLUDED.
-    </h2>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mt-[60px]">
-      <div className="reveal-left">
-        <p className="text-[0.9rem] leading-[1.9] text-foreground/60 mb-6">
-          Communication is the multiplier. Every technical skill becomes 10x more powerful when you can present, pitch, and persuade in fluent English.
-        </p>
-        <p className="text-[0.9rem] leading-[1.9] text-foreground/60">
-          That's why every Nerdy Academy student gets spoken English training as part of the course — no extra cost.
-        </p>
+  <section id="spoken" className="py-[160px] px-6 md:px-[60px] bg-black relative overflow-hidden">
+    <div className="max-w-7xl mx-auto">
+      <div className="flex items-center gap-3 mb-8 reveal">
+        <div className="w-8 h-[2px] bg-primary"></div>
+        <span className="text-[0.65rem] tracking-[6px] uppercase text-primary font-bold">
+          BONUS INCLUDED
+        </span>
       </div>
-      <div className="reveal-right">
-        <div className="bg-[#111] p-12 border-l-[6px] border-primary">
-          <div className="font-heading text-[1.3rem] tracking-[3px] mb-6 text-primary">WHAT YOU'LL LEARN</div>
-          <ul className="list-none">
-            {[
-              'Fluent conversation skills',
-              'Business English vocabulary',
-              'Presentation confidence',
-              'Interview communication',
-              'Email & professional writing',
-              'Public speaking fundamentals',
-            ].map((item) => (
-              <li key={item} className="py-[13px] border-b border-white/[0.07] text-[0.9rem] text-foreground/70 flex gap-3 items-start">
-                <span className="text-primary flex-shrink-0">→</span> {item}
-              </li>
-            ))}
-          </ul>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-end">
+        {/* Left Content */}
+        <div className="reveal-left">
+          <h2 className="font-heading text-[clamp(48px,8vw,95px)] leading-[0.85] text-white mb-12">
+            DO WE LEARN<br />
+            <span className="text-primary">SPOKEN</span><br />
+            ENGLISH TOO?
+          </h2>
+
+          <div className="flex items-start gap-8 mb-10">
+            <div className="relative">
+              <span className="font-heading text-[clamp(80px,12vw,140px)] leading-[0.7] text-primary">
+                YES.
+              </span>
+              <div className="absolute -bottom-2 right-0 w-4 h-4 bg-primary rounded-full shadow-[0_0_20px_rgba(255,0,0,0.8)] animate-pulse"></div>
+            </div>
+            
+            <div className="pt-2">
+              <div className="font-heading text-[1.4rem] tracking-[1px] text-white leading-tight">
+                30 MINS/SESH
+              </div>
+              <div className="text-[0.65rem] tracking-[4px] uppercase text-white/40 mt-1">
+                OF SPOKEN ENGLISH<br />
+                EVERY SESSION · 1:1 ONLY
+              </div>
+            </div>
+          </div>
+
+          <p className="text-[1rem] leading-[1.6] text-white/40 max-w-lg font-medium">
+            Every 1:1 session includes 30 minutes of structured spoken English practice. 
+            Communication is the career skill no one teaches — until now.
+          </p>
+        </div>
+
+        {/* Right Content - Features Card */}
+        <div className="reveal-right">
+          <div className="bg-[#080808] p-12 lg:p-16 border-l-[3px] border-primary relative group">
+            {/* Subtle glass effect overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            
+            <div className="font-heading text-[1.1rem] tracking-[3px] text-primary mb-12 uppercase">
+              WHAT YOU PRACTICE:
+            </div>
+            
+            <ul className="space-y-8 relative z-10">
+              {[
+                'Elevator pitches & storytelling',
+                'Professional vocabulary & diction',
+                'Interview & presentation confidence',
+                'Real-time correction & feedback',
+              ].map((item) => (
+                <li key={item} className="pb-6 border-b border-white/5 flex gap-5 items-center group/item hover:translate-x-2 transition-transform cursor-default">
+                  <span className="text-primary text-xl font-light transform scale-x-150 group-hover/item:scale-x-[1.8] transition-transform">→</span>
+                  <span className="text-[1.1rem] text-white/70 group-hover/item:text-white transition-colors font-medium">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
