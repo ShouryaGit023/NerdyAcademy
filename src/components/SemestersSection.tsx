@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { semesters } from '@/data/courseData';
 import {
   Carousel,
@@ -6,10 +6,44 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel';
+
+const AUTO_PLAY_INTERVAL = 2500;
 
 const SemestersSection = () => {
   const [active, setActive] = useState(0);
+  const [api, setApi] = useState<CarouselApi>();
+
+  const startAutoPlay = useCallback(() => {
+    if (!api) return;
+    const id = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else {
+        api.scrollTo(0);
+      }
+    }, AUTO_PLAY_INTERVAL);
+    return id;
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) return;
+    // Reset to start whenever tab changes
+    api.scrollTo(0);
+    const id = startAutoPlay();
+
+    // Pause auto-play on manual interaction
+    const stopOnInteract = () => {
+      clearInterval(id);
+    };
+    api.on('pointerDown', stopOnInteract);
+
+    return () => {
+      clearInterval(id);
+      api.off('pointerDown', stopOnInteract);
+    };
+  }, [api, active, startAutoPlay]);
 
   return (
     <section id="semesters" className="py-[120px] px-6 md:px-[60px]" style={{ background: '#0d0d0d' }}>
@@ -43,9 +77,9 @@ const SemestersSection = () => {
         </div>
 
         <Carousel
-          opts={{
-            align: 'start',
-          }}
+          key={active}
+          setApi={setApi}
+          opts={{ align: 'start', loop: true }}
           className="w-full relative group"
         >
           <CarouselContent className="-ml-3">
@@ -70,4 +104,3 @@ const SemestersSection = () => {
 };
 
 export default SemestersSection;
-

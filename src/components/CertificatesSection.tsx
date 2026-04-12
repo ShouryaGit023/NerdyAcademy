@@ -9,7 +9,7 @@ const CertificatesSection = () => (
       }
       .cert-curtain.visible::after { transform: scaleX(0); }
     `}</style>
-    
+
     <span className="text-[0.65rem] tracking-[6px] uppercase text-white/65 mb-[14px] block reveal">Certifications</span>
     <h2 className="font-heading text-[clamp(38px,6vw,78px)] leading-[0.95] mb-[18px] reveal">
       EARN <span className="text-accent">YOUR</span><br />CERTIFICATE.
@@ -43,9 +43,8 @@ const CertificatesSection = () => (
       ].map((cert) => (
         <div
           key={cert.title}
-          className={`bg-black/[0.35] p-[40px_28px] border-b-4 transition-transform duration-300 hover:-translate-y-[6px] reveal ${
-            cert.accent ? 'border-foreground' : 'border-accent'
-          }`}
+          className={`bg-black/[0.35] p-[40px_28px] border-b-4 transition-transform duration-300 hover:-translate-y-[6px] reveal ${cert.accent ? 'border-foreground' : 'border-accent'
+            }`}
         >
           <div className={`font-heading text-[1.7rem] mb-4 ${cert.accent ? 'text-foreground' : 'text-accent'}`}>
             {cert.title}
