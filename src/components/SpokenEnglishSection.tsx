@@ -11,7 +11,7 @@ const SpokenEnglishSection = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-end">
         {/* Left Content */}
         <div className="reveal-left">
-          <h2 className="font-heading text-[clamp(48px,8vw,95px)] leading-[0.85] text-white mb-12">
+          <h2 className="font-heading text-[clamp(35px,8vw,95px)] leading-[0.85] text-white mb-12">
             DO WE LEARN<br />
             <span className="text-primary">SPOKEN</span><br />
             ENGLISH TOO?
@@ -19,7 +19,7 @@ const SpokenEnglishSection = () => (
 
           <div className="flex items-start gap-8 mb-10">
             <div className="relative">
-              <span className="font-heading text-[clamp(80px,12vw,140px)] leading-[0.7] text-primary">
+              <span className="font-heading text-[clamp(50px,12vw,140px)] leading-[0.7] text-primary">
                 YES.
               </span>
               <div className="absolute -bottom-2 right-0 w-4 h-4 bg-primary rounded-full shadow-[0_0_20px_rgba(255,0,0,0.8)] animate-pulse"></div>
