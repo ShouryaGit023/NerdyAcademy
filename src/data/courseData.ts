@@ -81,11 +81,11 @@ export const semesters: Semester[] = [
 
 export const faqData = [
   { q: 'What is Nerdy Academy anyway?', a: 'Nerdy Academy offers online and classroom courses. We teach computer and communication skills. We help people grow.' },
-  { q: 'Is this online or offline?', a: 'Both! You can attend live sessions online or at our classroom in Jaipur. Same content, same instructor.' },
+  { q: 'Is this online or offline?', a: 'Both! You can attend live sessions online or at our classroom in Bhilai. Same content, same instructor.' },
   { q: 'How long is the course?', a: '3 months, 4 semesters, 36 live sessions. Each session is hands-on and action-packed.' },
-  { q: 'Do I get a certificate?', a: 'Yes. After completing all semesters, a Grand Final Project + VIVA, you receive a Nerdy Academy certificate.' },
+  { q: 'Do I get a certificate?', a: 'Yes. After completing all semesters, a Grand Final Project + VIVA, you receive 3 Nerdy Academy certificate.' },
   { q: 'What\'s the difference between Batch and 1:1?', a: 'Rs 20000 for classroom/online batches and Rs. 55,000 for one to one online/classroom learning. Both cover the same curriculum.' },
-  { q: 'Can I pay in installments?', a: 'No, partial payments are not allowed, and we do not offer discounts or refunds.' },
+  { q: 'Can I pay in installments?', a: 'Yes, partial payments are allowed, but no discounts or refunds.' },
 ];
 
 export const whyData = [
