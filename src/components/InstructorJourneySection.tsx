@@ -134,28 +134,28 @@ const InstructorJourneySection = () => {
         </div>
 
         {/* Work Map Section */}
-        <div className="relative bg-black overflow-hidden grid grid-cols-1 md:grid-cols-[1.2fr_1fr] min-h-[400px] md:min-h-[550px]">
+        <div className="relative bg-black overflow-hidden min-h-[400px] md:min-h-[550px] flex items-center">
+          {/* Map Image Background */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="/images/author/Gemini_world.png" 
+              alt="Work Map" 
+              className="w-full h-full object-cover opacity-60 blur-[1px] scale-105"
+              style={{ transform: 'translateY(30px) scale(1.05)' }}
+            />
+            {/* Overlay to ensure text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+          </div>
+
           {/* Text Content */}
-          <div className="relative z-10 flex flex-col justify-center px-10 md:pl-24 py-16 md:py-0">
-            <h4 className="font-heading text-[clamp(38px,8vw,92px)] leading-[0.8] text-white drop-shadow-2xl">
+          <div className="relative z-10 flex flex-col justify-center px-10 md:pl-24 py-16 md:py-0 max-w-4xl">
+            <h4 className="font-heading text-[clamp(38px,8vw,92px)] leading-[0.8] text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)]">
               <span className="text-accent">LONDON</span> · WARSAW<br />
               MUMBAI · <span className="text-accent">BALI</span><br /><span className="text-accent">BHILAI </span>
               & <span className="text-accent italic">MORE.</span>
             </h4>
-            <div className="mt-6 h-1 w-24 bg-primary rounded-full" />
+            <div className="mt-6 h-1.5 w-32 bg-primary rounded-full shadow-[0_0_20px_rgba(255,0,0,0.6)]" />
           </div>
-
-          {/* Map Image Content */}
-          <div className="relative flex items-center p-4 md:p-10">
-            <img 
-              src="/images/author/world map.png" 
-              alt="Work Map" 
-              className="w-full h-auto object-contain opacity-100 drop-shadow-[0_0_30px_rgba(255,10,10,0.1)]"
-            />
-          </div>
-
-          {/* Background Polish */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent pointer-events-none" />
         </div>
       </div>
     </section>

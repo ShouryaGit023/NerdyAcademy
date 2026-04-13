@@ -57,6 +57,14 @@ const Footer = () => (
         <div className="font-heading text-[0.85rem] tracking-[5px] text-foreground/[0.22] mb-[22px] pb-3 border-b border-white/[0.05]">CONTACT</div>
 
         <div className="mb-5">
+          <div className="text-[0.5rem] tracking-[4px] text-foreground/[0.22] mb-[6px]">ADDRESS</div>
+          <a href="https://maps.app.goo.gl/FRQ44RMezFmD2JBs6" target="_blank" rel="noopener noreferrer" className="font-heading text-[1rem] leading-[1.4] tracking-[1px] text-foreground/65 no-underline block hover:text-primary transition-colors">
+            A, Street Number 4, beside 22,<br />
+            Sector 2, Bhilai, Chhattisgarh 490001
+          </a>
+        </div>
+
+        <div className="mb-5">
           <div className="text-[0.5rem] tracking-[4px] text-foreground/[0.22] mb-[6px]">PHONE</div>
           <a href="tel:8225855200" className="font-heading text-[1.3rem] tracking-[2px] text-primary no-underline block">8225855200</a>
           <a href="tel:7828399992" className="font-heading text-[1.3rem] tracking-[2px] text-primary no-underline block">7828399992</a>
