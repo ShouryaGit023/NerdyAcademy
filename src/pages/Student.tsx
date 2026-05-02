@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { LogOut, GraduationCap, CheckCircle2, Circle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '@/config';
 
 const SYLLABUS = [
   { id: 'm1', title: 'Semester 1: Introduction to AI & Prompt Engineering' },
@@ -20,16 +21,31 @@ const Student = () => {
   const [completedModules, setCompletedModules] = useState<string[]>([]);
 
   useEffect(() => {
+    const fetchProgress = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        
+        const res = await fetch(`${API_BASE_URL}/api/student/progress`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        
+        if (res.ok) {
+          const data = await res.json();
+          setCompletedModules(data.completedModules || []);
+        }
+      } catch (error) {
+        console.error('Error fetching progress:', error);
+      }
+    };
+
     const userData = localStorage.getItem('user');
     if (userData) {
       const parsedUser = JSON.parse(userData);
       setUser(parsedUser);
-      
-      // Load saved progress for this specific user
-      const savedProgress = localStorage.getItem(`progress_${parsedUser._id}`);
-      if (savedProgress) {
-        setCompletedModules(JSON.parse(savedProgress));
-      }
+      fetchProgress();
     } else {
       navigate('/auth');
     }
@@ -41,7 +57,7 @@ const Student = () => {
     navigate('/');
   };
 
-  const toggleModule = (id: string) => {
+  const toggleModule = async (id: string) => {
     let newCompleted: string[];
     if (completedModules.includes(id)) {
       newCompleted = completedModules.filter(m => m !== id);
@@ -49,9 +65,30 @@ const Student = () => {
       newCompleted = [...completedModules, id];
     }
     
+    // Optimistic UI update
     setCompletedModules(newCompleted);
-    if (user) {
-      localStorage.setItem(`progress_${user._id}`, JSON.stringify(newCompleted));
+
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const response = await fetch(`${API_BASE_URL}/api/student/progress`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ completedModules: newCompleted })
+        });
+        
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Failed to save progress:', errorData);
+          alert(`Failed to save progress: ${errorData.message}`);
+        }
+      }
+    } catch (error) {
+      console.error('Error updating progress:', error);
+      alert('Network error updating progress');
     }
   };
 

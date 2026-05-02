@@ -143,12 +143,7 @@ const Admin = () => {
 
   const handleViewProgress = (student: any) => {
     setViewingStudent(student);
-    const savedProgress = localStorage.getItem(`progress_${student._id}`);
-    if (savedProgress) {
-      setStudentProgress(JSON.parse(savedProgress));
-    } else {
-      setStudentProgress([]);
-    }
+    setStudentProgress(student.completedModules || []);
     setViewProgressModalOpen(true);
   };
 
