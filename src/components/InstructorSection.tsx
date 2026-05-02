@@ -32,7 +32,7 @@ const InstructorSection = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
           {[
             { cat: 'ACHIEVEMENT', text: 'Represented India at UNESCO APEID' },
-            { cat: 'ACHIEVEMENT', text: 'TEDx Champion & Main Speaker' },
+            { cat: 'ACHIEVEMENT', text: 'TEDx Champion' },
             { cat: 'SPORT', text: 'Formula 4 Racing Driver' },
             { cat: 'SPORT', text: 'Pro Pickleball Player (#12 India)' },
           ].map((item, i) => (

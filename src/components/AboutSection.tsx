@@ -10,7 +10,7 @@ const AboutSection = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center mt-10">
       <div className="reveal-left">
         <p className="text-[0.9rem] leading-[1.9] text-foreground/60 mb-[18px]">
-          Nerdy Academy is a Startup India certified education company based in Jaipur. We believe in learning by doing — not watching. Every module is designed to create immediate, measurable impact.
+          Nerdy Academy is a Startup India certified education company based in Bhilai. We believe in learning by doing — not watching. Every module is designed to create immediate, measurable impact.
         </p>
         <p className="text-[0.9rem] leading-[1.9] text-foreground/60">
           From AI tools to digital marketing, finance to career building — we cover what matters in the real world. No academic padding. No useless theory.
@@ -21,7 +21,7 @@ const AboutSection = () => (
         {[
           { num: '500+', label: 'Students Trained' },
           { num: '₹5Cr+', label: 'Ad Budget Managed' },
-          { num: '36', label: 'Live Sessions' },
+          { num: '2500+', label: 'Live Sessions' },
           { num: '100%', label: 'Hands-On' },
         ].map((tile) => (
           <div key={tile.label} className="bg-[#111] p-[30px] text-center">
