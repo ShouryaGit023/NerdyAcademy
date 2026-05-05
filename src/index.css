@@ -272,6 +272,15 @@
   border-radius: 2px;
 }
 
+/* ── Utilities ── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ── Responsive overrides ── */
 @media (max-width: 900px) {
   .hide-mobile {
