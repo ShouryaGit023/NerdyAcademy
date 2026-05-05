@@ -15,12 +15,18 @@ const Student = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<any>(null);
 
+  const getTodayFormatted = () => {
+    const d = new Date();
+    return `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
+  };
+
   const [isMilestoneModalOpen, setIsMilestoneModalOpen] = useState(false);
+  const [editingMilestoneId, setEditingMilestoneId] = useState<string | null>(null);
   const [milestoneType, setMilestoneType] = useState('Topic Learned');
   const [milestoneStudent, setMilestoneStudent] = useState('');
   const [milestoneTitle, setMilestoneTitle] = useState('');
   const [milestoneDetails, setMilestoneDetails] = useState('');
-  const [milestoneDate, setMilestoneDate] = useState('04-05-2026');
+  const [milestoneDate, setMilestoneDate] = useState(getTodayFormatted());
   const [milestoneScore, setMilestoneScore] = useState('');
 
   const [studentsList, setStudentsList] = useState<any[]>([]);
@@ -50,14 +56,14 @@ const Student = () => {
       ...t,
       eventType: 'topic',
       dateValue: new Date(t.date).getTime(),
-      displayDate: new Date(t.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+      displayDate: new Date(t.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
     }));
 
     const tests = (student.tests || []).map((t: any) => ({
       ...t,
       eventType: 'test',
       dateValue: new Date(t.dateAndTime).getTime(),
-      displayDate: new Date(t.dateAndTime).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+      displayDate: new Date(t.dateAndTime).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
     }));
 
     return [...topics, ...tests].sort((a, b) => b.dateValue - a.dateValue);
@@ -116,33 +122,63 @@ const Student = () => {
     navigate('/');
   };
 
+  const handleOpenNewMilestoneModal = () => {
+    setEditingMilestoneId(null);
+    setMilestoneType('Topic Learned');
+    setMilestoneStudent('');
+    setMilestoneTitle('');
+    setMilestoneDetails('');
+    setMilestoneScore('');
+    setMilestoneDate(getTodayFormatted());
+    setIsMilestoneModalOpen(true);
+  };
+
   const handleSaveMilestone = async () => {
     if (!milestoneStudent || !milestoneTitle || !milestoneDetails || !milestoneDate) {
       toast.error('Please fill in all required fields');
       return;
     }
+
+    if (milestoneType === 'Test / Quiz') {
+      if (milestoneScore === '' || milestoneScore === null || milestoneScore === undefined) {
+        toast.error('Please enter a score');
+        return;
+      }
+      const scoreNum = Number(milestoneScore);
+      if (isNaN(scoreNum) || scoreNum < 0 || scoreNum > 100) {
+        toast.error('Score must be between 0 and 100');
+        return;
+      }
+    }
     
     try {
       const token = localStorage.getItem('token');
+      const method = editingMilestoneId ? 'PUT' : 'POST';
+      const body: any = {
+        studentId: milestoneStudent,
+        type: milestoneType,
+        title: milestoneTitle,
+        details: milestoneDetails,
+        score: milestoneType === 'Test / Quiz' ? Number(milestoneScore) : undefined,
+        date: milestoneDate
+      };
+      if (editingMilestoneId) {
+        body.milestoneId = editingMilestoneId;
+      }
+
       const response = await fetch(`${API_BASE_URL}/api/milestones`, {
-        method: 'POST',
+        method: method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({
-          studentId: milestoneStudent,
-          type: milestoneType,
-          title: milestoneTitle,
-          details: milestoneDetails,
-          score: milestoneType === 'Test / Quiz' ? Number(milestoneScore) : undefined,
-          date: milestoneDate
-        })
+        body: JSON.stringify(body)
       });
 
       if (response.ok) {
-        toast.success('Milestone saved successfully!');
+        toast.success(editingMilestoneId ? 'Milestone updated successfully!' : 'Milestone saved successfully!');
         setIsMilestoneModalOpen(false);
+        setEditingMilestoneId(null);
         setMilestoneTitle('');
         setMilestoneDetails('');
         setMilestoneScore('');
@@ -156,6 +192,44 @@ const Student = () => {
     }
   };
 
+  const handleEditMilestone = (event: any) => {
+    setEditingMilestoneId(event._id);
+    setMilestoneStudent(selectedTimelineStudentId);
+    setMilestoneType(event.eventType === 'test' ? 'Test / Quiz' : 'Topic Learned');
+    setMilestoneTitle(event.title);
+    setMilestoneDetails(event.details || '');
+    setMilestoneScore(event.score ? event.score.toString() : '');
+    
+    const d = new Date(event.dateValue);
+    const formattedDate = `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth()+1).padStart(2, '0')}-${d.getFullYear()}`;
+    setMilestoneDate(formattedDate);
+    setIsMilestoneModalOpen(true);
+  };
+
+  const handleDeleteMilestone = async (milestoneId: string, type: string) => {
+    if (!window.confirm('Are you sure you want to delete this milestone?')) return;
+    try {
+      const token = localStorage.getItem('token');
+      const backendType = type === 'test' ? 'Test / Quiz' : 'Topic Learned';
+      const response = await fetch(`${API_BASE_URL}/api/milestones/${selectedTimelineStudentId}/${encodeURIComponent(backendType)}/${milestoneId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (response.ok) {
+        toast.success('Milestone deleted successfully');
+        fetchDashboardData();
+      } else {
+        const errData = await response.json();
+        toast.error(errData.message || 'Failed to delete milestone');
+      }
+    } catch (error) {
+      toast.error('Error connecting to server');
+    }
+  };
+
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white font-body selection:bg-primary/30 pb-20">
       {/* NAVBAR */}
@@ -166,12 +240,12 @@ const Student = () => {
             </h1>
          </div>
          <div className="hidden md:flex items-center gap-12 text-[10px] font-bold tracking-[0.2em] text-white/50">
-            <button onClick={() => setIsMilestoneModalOpen(true)} className="hover:text-white transition-colors uppercase">
+            <button onClick={handleOpenNewMilestoneModal} className="hover:text-white transition-colors uppercase">
               + MILESTONE
             </button>
          </div>
          <div className="flex items-center gap-4">
-            <button onClick={() => setIsMilestoneModalOpen(true)} className="bg-primary text-white text-[10px] font-bold tracking-[0.2em] px-6 py-3 hover:bg-primary/90 transition-colors uppercase hidden sm:block">
+            <button onClick={handleOpenNewMilestoneModal} className="bg-primary text-white text-[10px] font-bold tracking-[0.2em] px-6 py-3 hover:bg-primary/90 transition-colors uppercase hidden sm:block">
                + ADD MILESTONE
             </button>
             <button onClick={handleLogout} className="text-white/50 hover:text-white transition-colors p-2">
@@ -200,7 +274,7 @@ const Student = () => {
                  + NEW
               </div>
               <div className="flex items-center gap-4">
-                 <button onClick={() => setIsMilestoneModalOpen(true)} className="bg-primary text-white text-[10px] font-bold tracking-[0.2em] px-6 py-2 hover:bg-primary/90 transition-colors">
+                 <button onClick={handleOpenNewMilestoneModal} className="bg-primary text-white text-[10px] font-bold tracking-[0.2em] px-6 py-2 hover:bg-primary/90 transition-colors">
                     + MILESTONE
                  </button>
               </div>
@@ -332,22 +406,39 @@ const Student = () => {
                              </div>
 
                              {/* Content Card */}
-                             <div className="flex-1 bg-[#111] border border-white/5 p-6 hover:border-white/10 transition-colors">
-                                <div className="flex items-center gap-3 mb-2">
-                                   <span className={`text-[10px] font-bold tracking-[0.2em] px-2 py-1 rounded uppercase ${event.eventType === 'test' ? 'bg-primary/20 text-primary' : 'bg-blue-500/20 text-blue-400'}`}>
+                             <div className={`flex-1 bg-[#111] p-6 relative z-20 border-t-2 ${event.eventType === 'test' ? 'border-blue-500' : 'border-green-500'} ml-8 md:ml-0`}>
+                                <div className="flex justify-between items-center mb-4">
+                                  <span className={`text-[10px] font-bold tracking-[0.2em] uppercase ${event.eventType === 'test' ? 'text-blue-500' : 'text-green-500'}`}>
                                      {event.eventType === 'test' ? 'TEST / QUIZ' : 'TOPIC LEARNED'}
-                                   </span>
-                                   {event.eventType === 'test' && (
-                                     <span className="text-white font-bold">{event.score}<span className="text-white/30 text-xs ml-1">/100</span></span>
-                                   )}
+                                  </span>
+                                  <span className="text-[10px] text-white/40 uppercase tracking-widest">{event.displayDate}</span>
                                 </div>
-                                <h3 className="text-lg font-bold text-white mb-2">{event.title}</h3>
-                                {event.eventType === 'test' && event.details && (
-                                  <p className="text-sm text-white/60 leading-relaxed">{event.details}</p>
+                                <h3 className="font-heading text-3xl text-white uppercase mb-2 leading-none">{event.title}</h3>
+                                {event.details && (
+                                  <p className="text-sm text-white/50 leading-relaxed mb-6">{event.details}</p>
                                 )}
-                                {event.eventType === 'topic' && event.details && (
-                                  <p className="text-sm text-white/60 leading-relaxed">{event.details}</p>
+                                
+                                {event.eventType === 'test' && (
+                                  <div className="mb-6">
+                                    <div className="flex items-end gap-3 mb-2">
+                                       <span className={`font-heading text-5xl leading-none ${event.score >= 80 ? 'text-green-500' : event.score >= 50 ? 'text-yellow-500' : 'text-red-500'}`}>{event.score}</span>
+                                       <span className="text-[10px] font-bold tracking-[0.2em] text-white/30 uppercase pb-1">
+                                         {event.score >= 80 ? 'EXCELLENT' : event.score >= 50 ? 'AVERAGE' : 'NEEDS WORK'} - OUT OF 100
+                                       </span>
+                                    </div>
+                                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                       <div 
+                                         className={`h-full ${event.score >= 80 ? 'bg-green-500' : event.score >= 50 ? 'bg-yellow-500' : 'bg-red-500'}`} 
+                                         style={{ width: `${event.score}%` }}
+                                       ></div>
+                                    </div>
+                                  </div>
                                 )}
+
+                                <div className="flex items-center gap-4 pt-4 border-t border-white/5 mt-4">
+                                  <button onClick={() => handleEditMilestone(event)} className="text-[10px] font-bold tracking-[0.2em] text-white/30 hover:text-white uppercase px-4 py-2 border border-white/10 hover:bg-white/5 transition-colors rounded">EDIT</button>
+                                  <button onClick={() => handleDeleteMilestone(event._id, event.eventType)} className="text-[10px] font-bold tracking-[0.2em] text-white/30 hover:text-red-500 uppercase px-4 py-2 border border-white/10 hover:bg-red-500/10 hover:border-red-500/50 transition-colors rounded">DELETE</button>
+                                </div>
                              </div>
                           </div>
                         ))}
@@ -363,7 +454,7 @@ const Student = () => {
         <DialogContent className="sm:max-w-[500px] bg-[#111] border-white/10 text-white p-0 overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
           <div className="p-8 pb-6 overflow-y-auto flex-1 custom-scrollbar">
             <DialogTitle className="font-heading text-4xl tracking-widest text-white uppercase m-0 leading-none mb-6">
-              NEW MILESTONE
+              {editingMilestoneId ? 'EDIT MILESTONE' : 'NEW MILESTONE'}
             </DialogTitle>
             
             <div className="space-y-5">
@@ -430,6 +521,8 @@ const Student = () => {
                   <Label className="text-[10px] font-bold tracking-[0.2em] text-white/50 uppercase">Score (Out of 100)</Label>
                   <Input 
                     type="number"
+                    min="0"
+                    max="100"
                     className="w-full bg-[#0a0a0a] border border-white/10 text-white p-3 rounded-md h-auto focus-visible:ring-primary focus-visible:border-primary"
                     value={milestoneScore}
                     onChange={(e) => setMilestoneScore(e.target.value)}
@@ -458,7 +551,13 @@ const Student = () => {
           <div className="flex items-center justify-end p-6 border-t border-white/5 gap-4 bg-[#111] z-10">
             <button 
               type="button"
-              onClick={() => setIsMilestoneModalOpen(false)}
+              onClick={() => {
+                setIsMilestoneModalOpen(false);
+                setEditingMilestoneId(null);
+                setMilestoneTitle('');
+                setMilestoneDetails('');
+                setMilestoneScore('');
+              }}
               className="text-[10px] font-bold tracking-[0.2em] text-white/50 hover:text-white uppercase px-6 py-3 border border-white/10 rounded hover:bg-white/5 transition-colors"
             >
               Cancel
