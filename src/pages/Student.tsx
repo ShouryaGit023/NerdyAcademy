@@ -66,7 +66,21 @@ const Student = () => {
       displayDate: new Date(t.dateAndTime).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
     }));
 
-    return [...topics, ...tests].sort((a, b) => b.dateValue - a.dateValue);
+    const homeworks = (student.homeworks || []).map((h: any) => ({
+      ...h,
+      eventType: 'homework',
+      dateValue: new Date(h.date).getTime(),
+      displayDate: new Date(h.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    }));
+
+    const notes = (student.notes || []).map((n: any) => ({
+      ...n,
+      eventType: 'note',
+      dateValue: new Date(n.date).getTime(),
+      displayDate: new Date(n.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    }));
+
+    return [...topics, ...tests, ...homeworks, ...notes].sort((a, b) => b.dateValue - a.dateValue);
   };
 
   const timelineEvents = getTimelineEvents();
@@ -89,12 +103,16 @@ const Student = () => {
       });
       if (statsRes.ok) {
         const data = await statsRes.json();
-        setStats({
-          totalMilestones: data.totalMilestones || 0,
-          topicsLearned: data.topicsLearned || 0,
-          testsTaken: data.testsTaken || 0,
-          averageScore: data.averageScore || 0
-        });
+        // Since we want per-student stats now, we use the student from studentsList
+        const me = studentsList.find((s: any) => s._id === user?._id);
+        if (me) {
+          setStats({
+            totalMilestones: (me.topicsLearned?.length || 0) + (me.tests?.length || 0) + (me.homeworks?.length || 0) + (me.notes?.length || 0),
+            topicsLearned: me.topicsLearned?.length || 0,
+            testsTaken: me.tests?.length || 0,
+            averageScore: me.avgScore || 0
+          });
+        }
       }
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
@@ -195,7 +213,13 @@ const Student = () => {
   const handleEditMilestone = (event: any) => {
     setEditingMilestoneId(event._id);
     setMilestoneStudent(selectedTimelineStudentId);
-    setMilestoneType(event.eventType === 'test' ? 'Test / Quiz' : 'Topic Learned');
+    
+    let typeDisplay = 'Topic Learned';
+    if (event.eventType === 'test') typeDisplay = 'Test / Quiz';
+    else if (event.eventType === 'homework') typeDisplay = 'Homework';
+    else if (event.eventType === 'note') typeDisplay = 'Note';
+    
+    setMilestoneType(typeDisplay);
     setMilestoneTitle(event.title);
     setMilestoneDetails(event.details || '');
     setMilestoneScore(event.score ? event.score.toString() : '');
@@ -210,7 +234,12 @@ const Student = () => {
     if (!window.confirm('Are you sure you want to delete this milestone?')) return;
     try {
       const token = localStorage.getItem('token');
-      const backendType = type === 'test' ? 'Test / Quiz' : 'Topic Learned';
+      
+      let backendType = 'Topic Learned';
+      if (type === 'test') backendType = 'Test / Quiz';
+      else if (type === 'homework') backendType = 'Homework';
+      else if (type === 'note') backendType = 'Note';
+
       const response = await fetch(`${API_BASE_URL}/api/milestones/${selectedTimelineStudentId}/${encodeURIComponent(backendType)}/${milestoneId}`, {
         method: 'DELETE',
         headers: {
@@ -308,7 +337,7 @@ const Student = () => {
                 const student = studentsList.find(s => s._id === selectedTimelineStudentId);
                 if (!student) return null;
 
-                const totalMilestones = (student.topicsLearned?.length || 0) + (student.tests?.length || 0);
+                const totalMilestones = (student.topicsLearned?.length || 0) + (student.tests?.length || 0) + (student.homeworks?.length || 0) + (student.notes?.length || 0);
 
                 return (
                   <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/5">
@@ -354,7 +383,12 @@ const Student = () => {
               <div className="space-y-6 max-h-[600px] overflow-y-auto no-scrollbar pr-2">
                 {timelineEvents.map((event, idx) => (
                   <div key={idx} className="flex items-start gap-4 group cursor-pointer">
-                    <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${event.eventType === 'test' ? 'bg-blue-500' : 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]'}`}></div>
+                    <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${
+                      event.eventType === 'test' ? 'bg-blue-500' : 
+                      event.eventType === 'homework' ? 'bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.4)]' :
+                      event.eventType === 'note' ? 'bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.4)]' :
+                      'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]'
+                    }`}></div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between items-start gap-2">
                         <h4 className="text-[11px] font-bold text-white/70 group-hover:text-white transition-colors truncate uppercase tracking-wider">
@@ -400,23 +434,38 @@ const Student = () => {
                       {timelineEvents.map((event, idx) => (
                         <div key={idx} className="relative pl-10 group">
                           {/* Dot */}
-                          <div className={`absolute left-0 top-1.5 w-4 h-4 rounded-full bg-[#0a0a0a] border-2 z-10 group-hover:scale-125 transition-all duration-300 ${event.eventType === 'test' ? 'border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.4)]' : 'border-primary shadow-[0_0_10px_rgba(255,51,51,0.4)]'
-                            }`}></div>
+                          <div className={`absolute left-0 top-1.5 w-4 h-4 rounded-full bg-[#0a0a0a] border-2 z-10 group-hover:scale-125 transition-all duration-300 ${
+                            event.eventType === 'test' ? 'border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.4)]' : 
+                            event.eventType === 'homework' ? 'border-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.4)]' :
+                            event.eventType === 'note' ? 'border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.4)]' :
+                            'border-primary shadow-[0_0_10px_rgba(255,51,51,0.4)]'
+                          }`}></div>
 
                           {/* Card */}
-                          <div className={`bg-[#111] border-l-4 p-8 relative overflow-hidden ${event.eventType === 'test' ? 'border-blue-500' : 'border-green-500'
-                            }`}>
+                          <div className={`bg-[#111] border-l-4 p-8 relative overflow-hidden ${
+                            event.eventType === 'test' ? 'border-blue-500' : 
+                            event.eventType === 'homework' ? 'border-yellow-500' :
+                            event.eventType === 'note' ? 'border-purple-500' :
+                            'border-green-500'
+                          }`}>
                             {/* Decorative background label */}
                             <div className="absolute top-4 right-8 text-[8px] font-black tracking-[0.3em] text-white/5 uppercase select-none">
                               NERDY ACADEMY RECORDS
                             </div>
 
-                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-                              <div className="flex items-center gap-3">
-                                <span className={`text-[9px] font-black tracking-[0.2em] uppercase px-3 py-1 border ${event.eventType === 'test' ? 'border-blue-500/20 bg-blue-500/5 text-blue-500' : 'border-green-500/20 bg-green-500/5 text-green-500'
+                              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                                <div className="flex items-center gap-3">
+                                  <span className={`text-[9px] font-black tracking-[0.2em] uppercase px-3 py-1 border ${
+                                    event.eventType === 'test' ? 'border-blue-500/20 bg-blue-500/5 text-blue-500' : 
+                                    event.eventType === 'homework' ? 'border-yellow-500/20 bg-yellow-500/5 text-yellow-500' :
+                                    event.eventType === 'note' ? 'border-purple-500/20 bg-purple-500/5 text-purple-500' :
+                                    'border-green-500/20 bg-green-500/5 text-green-500'
                                   }`}>
-                                  {event.eventType === 'test' ? 'TEST / QUIZ' : 'TOPIC LEARNED'}
-                                </span>
+                                    {event.eventType === 'test' ? 'TEST / QUIZ' : 
+                                     event.eventType === 'homework' ? 'HOMEWORK' :
+                                     event.eventType === 'note' ? 'PERSONAL NOTE' :
+                                     'TOPIC LEARNED'}
+                                  </span>
                                 <div className="flex items-center gap-2 text-white/30">
                                   <Calendar className="w-3 h-3" />
                                   <span className="text-[9px] font-bold tracking-widest uppercase">{event.displayDate}</span>
@@ -509,6 +558,8 @@ const Student = () => {
                   >
                     <option value="Topic Learned">Topic Learned</option>
                     <option value="Test / Quiz">Test / Quiz</option>
+                    <option value="Homework">Homework</option>
+                    <option value="Note">Note</option>
                   </select>
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                     <ChevronDown className="w-4 h-4 text-white/50" />
