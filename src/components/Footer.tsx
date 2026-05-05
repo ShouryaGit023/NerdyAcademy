@@ -59,7 +59,7 @@ const Footer = () => (
         <div className="mb-5">
           <div className="text-[0.5rem] tracking-[4px] text-foreground/[0.22] mb-[6px]">ADDRESS</div>
           <a href="https://maps.app.goo.gl/FRQ44RMezFmD2JBs6" target="_blank" rel="noopener noreferrer" className="font-heading text-[1rem] leading-[1.4] tracking-[1px] text-foreground/65 no-underline block hover:text-primary transition-colors">
-            A, Street Number 4, beside 22,<br />
+            22 A, Street Number 4, beside 22 A,<br />
             Sector 2, Bhilai, Chhattisgarh 490001
           </a>
         </div>
