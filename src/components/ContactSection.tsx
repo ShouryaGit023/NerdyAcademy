@@ -11,9 +11,9 @@ const ContactSection = () => {
 
     const formData = new FormData(e.currentTarget);
     const object = Object.fromEntries(formData);
-    
+
     // Web3Forms Access Key
-    object.access_key = "9f076ecd-42a7-4efc-9580-dcdaa05b14c6"; 
+    object.access_key = "9f076ecd-42a7-4efc-9580-dcdaa05b14c6";
     object.subject = `New Enquiry from ${object.name}`;
 
     try {
@@ -66,7 +66,7 @@ const ContactSection = () => {
           </h3>
 
           {[
-            { label: 'HEADQUARTERS', value: 'A, Street Number 4, beside 22,Sector 2, Bhilai', href: 'https://maps.app.goo.gl/FRQ44RMezFmD2JBs6' },
+            { label: 'HEADQUARTERS', value: '22 A, Street Number 4, beside 22 A,Sector 2, Bhilai', href: 'https://maps.app.goo.gl/FRQ44RMezFmD2JBs6' },
             { label: 'PHONE', value: '+91 8225855200', href: 'tel:8225855200' },
             { label: 'PHONE 2', value: '+91 7828399992', href: 'tel:7828399992' },
             { label: 'EMAIL', value: 'shreysuryamishra@gmail.com', href: 'mailto:shreysuryamishra@gmail.com' },
