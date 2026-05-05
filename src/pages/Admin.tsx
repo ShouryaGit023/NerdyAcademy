@@ -360,33 +360,27 @@ const Admin = () => {
                   {student.name}
                 </button>
               ))}
-              <button
-                onClick={handleAddStudent}
-                className="px-6 py-2 text-[10px] font-bold tracking-[0.2em] uppercase whitespace-nowrap bg-transparent text-white/30 border border-dashed border-white/10 hover:text-white hover:border-white/30 transition-all"
-              >
-                + NEW
-              </button>
             </div>
 
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3">
               {selectedTimelineStudentId && (
                 <button
                   onClick={() => handleDeleteStudent(selectedTimelineStudentId)}
-                  className="px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase bg-red-600/10 text-red-500 border border-red-600/20 hover:bg-red-600 hover:text-white transition-all flex items-center gap-2"
+                  className="px-3 md:px-4 py-2 text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase bg-red-600/10 text-red-500 border border-red-600/20 hover:bg-red-600 hover:text-white transition-all flex items-center gap-1 md:gap-2"
                 >
                   <Trash2 className="w-3 h-3" />
-                  DELETE STUDENT
+                  <span className="hidden sm:inline">DELETE</span>
                 </button>
               )}
               <button
                 onClick={handleAddStudent}
-                className="px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 border border-white/10 hover:text-white transition-colors"
+                className="px-3 md:px-4 py-2 text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 border border-white/10 hover:text-white transition-colors whitespace-nowrap"
               >
                 + STUDENT
               </button>
               <button
                 onClick={handleOpenNewMilestoneModal}
-                className="px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase bg-primary text-white hover:bg-primary/90 transition-colors"
+                className="px-3 md:px-4 py-2 text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase bg-primary text-white hover:bg-primary/90 transition-colors whitespace-nowrap"
               >
                 + MILESTONE
               </button>

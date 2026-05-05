@@ -289,10 +289,10 @@ const Student = () => {
               ))}
             </div>
 
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <button
                 onClick={handleOpenNewMilestoneModal}
-                className="px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase bg-primary text-white hover:bg-primary/90 transition-colors"
+                className="px-4 py-2 text-[9px] md:text-[10px] font-bold tracking-[0.2em] uppercase bg-primary text-white hover:bg-primary/90 transition-colors whitespace-nowrap"
               >
                 + MILESTONE
               </button>
