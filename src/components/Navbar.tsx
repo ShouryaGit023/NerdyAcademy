@@ -64,7 +64,7 @@ const Navbar = () => {
           ))}
           <li>
             <a
-              href="/auth"
+              href="https://nerdyai.netlify.app/"
               className="bg-primary text-foreground px-6 lg:px-8 py-[10px] lg:py-[13px] font-black text-[0.7rem] lg:text-[0.8rem] tracking-[2px] lg:tracking-[3px] uppercase no-underline clip-skew-sm"
             >
               Login
@@ -106,7 +106,7 @@ const Navbar = () => {
             {/* Bottom Section - Keeps the button at the bottom area */}
             <div className="w-full flex justify-center pb-10">
               <a
-                href="/auth"
+                href="https://nerdyai.netlify.app/"
                 onClick={closeNav}
                 className="bg-primary text-black px-12 py-5 font-black text-[1.1rem] tracking-[4px] uppercase no-underline clip-skew-sm block text-center w-full max-w-[300px]"
               >
