@@ -33,7 +33,7 @@
 // );
 
 // export default App;
-
+// added bug;
 
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
